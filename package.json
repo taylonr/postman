@@ -10,5 +10,6 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.15.4"
-  }
+  },
+  "repository": "git@github.com:taylonr/postman.git"
 }
