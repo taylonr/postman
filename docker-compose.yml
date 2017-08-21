@@ -4,13 +4,18 @@ services:
     image: postgres
     ports:
       - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postman_dev
   web:
     build: .
-    command: mix phx.server
+    command: npm run start
     image: taylonr/postman
     volumes:
       - .:/app
     ports:
-      - "4000:4000"
+      - "3000:3000"
     depends_on:
       - db
+    environment:
+      DATABASE_URL: postgres://postgres@db

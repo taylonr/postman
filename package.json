@@ -1,15 +1,27 @@
 {
   "name": "postman",
-  "version": "1.0.0",
-  "description": "API used for Postman course on Pluralsight",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./bin/www",
+    "db:migrate": "./node_modules/.bin/sequelize db:migrate",
+    "db:seed": "./node_modules/.bin/sequelize db:seed:all"
   },
-  "author": "Nate Taylor",
-  "license": "MIT",
   "dependencies": {
-    "express": "^4.15.4"
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "jade": "~1.11.0",
+    "morgan": "~1.8.1",
+    "pg": "^7.1.2",
+    "pg-hstore": "^2.3.2",
+    "pg-promise": "^6.5.0",
+    "sequelize": "^4.6.0",
+    "serve-favicon": "~2.4.2"
   },
-  "repository": "git@github.com:taylonr/postman.git"
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "sequelize-cli": "^2.8.0"
+  }
 }
