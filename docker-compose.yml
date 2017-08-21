@@ -11,8 +11,6 @@ services:
     build: .
     command: npm run start
     image: taylonr/postman
-    volumes:
-      - .:/app
     ports:
       - "3000:3000"
     depends_on:
