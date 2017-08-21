@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  return sequelize.define('Account', {
+  return sequelize.define('account', {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
