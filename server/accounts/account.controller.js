@@ -1,27 +1,30 @@
 const Account = require('../models/').account;
 
-const success = res => data => {
+const ok = res => data => {
   res.status(200).send(data);
 };
 
-const fail = res => err => {
+const serverError = res => err => {
   res.status(500).send(err);
 };
 
+const noContent = res => {
+  res.status(204).send();
+}
 
 module.exports = {
   list(req, res){
     return Account
       .all()
-      .then(success(res))
-      .catch(fail(res));
+      .then(ok(res))
+      .catch(serverError(res));
   },
 
   getById(req, res) {
     return Account
       .findById(req.params.id)
-      .then(success(res))
-      .catch(fail(res));
+      .then(ok(res))
+      .catch(serverError(res));
   },
 
   deleteById(req, res) {
@@ -34,7 +37,7 @@ module.exports = {
 
         return acct
           .destroy()
-          .then(() => res.status(204).send());
+          .then(noContent(res));
       });
   }
 }
