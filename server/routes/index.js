@@ -7,4 +7,5 @@ module.exports = (app) => {
 
   app.get('/accounts', accountsController.list);
   app.get('/accounts/:id', accountsController.getById);
+  app.delete('/accounts/:id', accountsController.deleteById);
 };

@@ -15,19 +15,22 @@ const createRes = (fake) => {
       fake.status = code;
       return this;
     },
-    send: (result) => {
-      fake.data = result;
-    }
+    send: td.function(),
+    end: td.function()
   }
 };
 
 const fakeById = (id, obj) => {
   const findById = td.replace(Account, 'findById');
-  td.when(findById(id || 1))
-    .thenResolve(obj || {
+  const returnObject = obj === null || obj ?
+    obj :
+    {
       name: 'test',
       id: 1
-    });
+    };
+
+  td.when(findById(id || 1))
+    .thenResolve(returnObject);
 
 };
 
@@ -60,10 +63,10 @@ describe('When getting a specific item', () => {
     const res = createRes(result);
 
     return controller.getById(req, res).then(() => {
-      return expect(result.data).to.eql({
+      td.verify(res.send({
         id: 1,
         name: 'test'
-      });
+      }));
     });
   });
 
@@ -98,8 +101,65 @@ describe('When getting a specific item', () => {
       const res = createRes(response);
 
       return controller.getById(req, res).then(() => {
-        return expect(response.data).to.eql('test');
+        return td.verify(res.send('test'));
+
       });
+    });
+  });
+});
+
+const fakeDestroy = () => {
+  const destroy = td.replace(Account, 'destroy');
+  td.when(destroy()).thenResolve({});
+
+  fakeById(1, {
+    destroy
+  });
+}
+describe('Whe deleting an item', () => {
+  it('Should set the status of 204', () => {
+    fakeDestroy()
+
+    const req = createReq({
+      id: 1
+    });
+    const response = {};
+    const res = createRes(response);
+
+    return controller.deleteById(req, res).then(() =>{
+      return expect(response.status).to.eql(204);
+    });
+  });
+
+  it('Should send an empty result', () => {
+      fakeDestroy()
+
+      const req = createReq({
+        id: 1
+      });
+      const response = {};
+      const res = createRes(response);
+
+      return controller.deleteById(req, res).then(() =>{
+        return td.verify(res.send());
+      });
+  });
+
+  describe('And the account does not exit', () => {
+    it('Should return a 204', () => {
+      fakeById(1, null);
+
+      const req = createReq({
+        id: 1
+      });
+
+      const response = {};
+      const res = createRes(response);
+
+      return controller.deleteById(req, res).then(() => {
+        return expect(response.status).to.eql(204);
+      });
+
     });
   });
 });

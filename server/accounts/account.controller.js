@@ -22,5 +22,19 @@ module.exports = {
       .findById(req.params.id)
       .then(success(res))
       .catch(fail(res));
+  },
+
+  deleteById(req, res) {
+    return Account
+      .findById(req.params.id)
+      .then((acct) => {
+        if(!acct){
+          return res.status(204).send();
+        }
+
+        return acct
+          .destroy()
+          .then(() => res.status(204).send());
+      });
   }
 }
