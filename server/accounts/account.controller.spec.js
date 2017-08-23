@@ -66,4 +66,40 @@ describe('When getting a specific item', () => {
       });
     });
   });
+
+  describe('When the call fails', () => {
+    it('Should set status to 500', () => {
+      const findById = td.replace(Account, 'findById');
+      td.when(findById(1))
+        .thenReject({});
+
+      const req = createReq({
+        id: 1
+      });
+
+      const response = {};
+      const res = createRes(response);
+
+      return controller.getById(req, res).then(() => {
+        return expect(response.status).to.eql(500);
+      });
+    });
+
+    it('Should send the error back', () => {
+      const findById = td.replace(Account, 'findById');
+      td.when(findById(1))
+        .thenReject('test');
+
+      const req = createReq({
+        id: 1
+      });
+
+      const response = {};
+      const res = createRes(response);
+
+      return controller.getById(req, res).then(() => {
+        return expect(response.data).to.eql('test');
+      });
+    });
+  });
 });
