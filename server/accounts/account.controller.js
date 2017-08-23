@@ -1,16 +1,8 @@
 const Account = require('../models/').account;
-
-const ok = res => data => {
-  res.status(200).send(data);
-};
-
-const serverError = res => err => {
-  res.status(500).send(err);
-};
-
-const noContent = res => {
-  res.status(204).send();
-}
+const responses = require('../responses'),
+  ok = responses.ok,
+  serverError = responses.serverError,
+  noContent = responses.noContent;
 
 module.exports = {
   list(req, res){
@@ -32,7 +24,7 @@ module.exports = {
       .findById(req.params.id)
       .then((acct) => {
         if(!acct){
-          return res.status(204).send();
+          return noContent(res);
         }
 
         return acct
