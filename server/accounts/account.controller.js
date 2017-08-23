@@ -31,5 +31,17 @@ module.exports = {
           .destroy()
           .then(noContent(res));
       });
+  },
+
+  updateById(req, res) {
+    return Account
+      .findById(req.params.id)
+      .then((acct) => {
+        return acct
+          .update({
+            name: req.body.name
+          })
+          .then(ok(res));
+      });
   }
 }

@@ -3,9 +3,10 @@ const td = require('testdouble');
 const controller = require('./account.controller');
 const Account = require('../models/').account;
 
-const createReq = (params) => {
+const createReq = (params = {}, body = {}) => {
   return {
-    params: params || {}
+    params: params,
+    body: body
   };
 }
 
@@ -160,6 +161,36 @@ describe('When deleting an item', () => {
         return expect(response.status).to.eql(204);
       });
 
+    });
+  });
+});
+
+describe('When updating an object', () => {
+  it('Should return a 200', () => {
+    const update = td.replace(Account, 'update');
+    td.when(update({
+      name: 'test'
+    })).thenResolve({
+      id: 1,
+      name: 'test'
+    });
+
+    fakeById(1, {
+      id: 1,
+      update: update
+    });
+
+    const req = createReq({
+      id: 1
+    }, {
+      name: 'test'
+    });
+
+    const response = {};
+    const res = createRes(response);
+
+    return controller.updateById(req, res).then(() => {
+      return expect(response.status).to.eql(200);
     });
   });
 });
