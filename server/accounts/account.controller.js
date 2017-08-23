@@ -4,19 +4,19 @@ const responses = require('../responses'),
   serverError = responses.serverError,
   noContent = responses.noContent;
 
+const get = (res, resp) => {
+  return resp
+    .then(ok(res))
+    .catch(serverError(res));
+}
+
 module.exports = {
   list(req, res){
-    return Account
-      .all()
-      .then(ok(res))
-      .catch(serverError(res));
+    return get(res, Account.all());
   },
 
   getById(req, res) {
-    return Account
-      .findById(req.params.id)
-      .then(ok(res))
-      .catch(serverError(res));
+    return get(res, Account.findById(req.params.id));
   },
 
   deleteById(req, res) {

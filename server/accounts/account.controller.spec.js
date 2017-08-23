@@ -116,7 +116,7 @@ const fakeDestroy = () => {
     destroy
   });
 }
-describe('Whe deleting an item', () => {
+describe('When deleting an item', () => {
   it('Should set the status of 204', () => {
     fakeDestroy()
 
