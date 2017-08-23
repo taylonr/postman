@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
-    "db:seed": "./node_modules/.bin/sequelize db:seed:all"
+    "db:seed": "./node_modules/.bin/sequelize db:seed:all",
+    "test:watch": "mocha -w **/*.spec.js"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
@@ -22,6 +23,9 @@
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
-    "sequelize-cli": "^2.8.0"
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0",
+    "sequelize-cli": "^2.8.0",
+    "testdouble": "^3.2.4"
   }
 }
