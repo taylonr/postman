@@ -3,6 +3,15 @@ const responses = require('../responses'),
   ok = responses.ok,
   serverError = responses.serverError,
   noContent = responses.noContent;
+const url = require('url');
+
+  function fullUrl(req) {
+    return url.format({
+      protocol: req.protocol,
+      host: req.get('host'),
+      pathname: req.originalUrl
+    });
+  }
 
 const get = (res, resp) => {
   return resp
@@ -43,5 +52,19 @@ module.exports = {
           })
           .then(ok(res));
       });
+  },
+
+  create(req, res) {
+    return Account
+      .create(req.body)
+      .then((acct) => {
+        acct.dataValues.links = [{
+          rel: 'self',
+          href: `${fullUrl(req)}/${acct.dataValues.id}`
+        }];
+
+        return ok(res)(acct);
+      })
+      .catch(serverError(res));
   }
 }

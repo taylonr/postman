@@ -5,8 +5,9 @@ module.exports = (app) => {
     message: 'Welcome to the accounts API!',
   }));
 
+  app.delete('/accounts/:id', accountsController.deleteById);
   app.get('/accounts', accountsController.list);
   app.get('/accounts/:id', accountsController.getById);
-  app.delete('/accounts/:id', accountsController.deleteById);
+  app.post('/accounts', accountsController.create);
   app.put('/accounts/:id', accountsController.updateById);
 };

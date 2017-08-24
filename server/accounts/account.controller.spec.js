@@ -5,13 +5,19 @@ const Account = require('../models/').account;
 
 const createReq = (params = {}, body = {}) => {
   return {
+    body: body,
+    originalUrl: 'accounts',
     params: params,
-    body: body
+    protocol: 'http',
+
+    get: () => {
+      return 'localhost:3000'
+    }
   };
 }
 
 const createRes = (fake) => {
-  return {
+  const res =  {
     status: function(code){
       fake.status = code;
       return this;
@@ -19,6 +25,8 @@ const createRes = (fake) => {
     send: td.function(),
     end: td.function()
   }
+
+  return res;
 };
 
 const fakeById = (id, obj) => {
@@ -117,6 +125,7 @@ const fakeDestroy = () => {
     destroy
   });
 }
+
 describe('When deleting an item', () => {
   it('Should set the status of 204', () => {
     fakeDestroy()
@@ -191,6 +200,78 @@ describe('When updating an object', () => {
 
     return controller.updateById(req, res).then(() => {
       return expect(response.status).to.eql(200);
+    });
+  });
+});
+
+const fakeCreate = () => {
+  const create = td.replace(Account, 'create');
+  td.when(create({
+    name: 'New Account'
+  })).thenResolve({
+    dataValues: {
+      id: 1,
+      name: 'New Account'
+    }
+  });
+};
+
+describe('When creating an object', () => {
+  it('Should set status 200', () => {
+    fakeCreate();
+
+    const req = createReq({}, {
+      name: 'New Account'
+    });
+
+    const response = {};
+    const res = createRes(response);
+
+    return controller.create(req, res).then(() => {
+      return expect(response.status).to.eql(200);
+    });
+  });
+
+  it('Should include a link to itself in the respose', () => {
+    fakeCreate();
+
+    const req = createReq({}, {
+      name: 'New Account'
+    });
+
+    const res = createRes({});
+
+    return controller.create(req, res).then(() => {
+      td.verify(res.send({
+        dataValues: {
+          id: 1,
+          name: 'New Account',
+          links: [{
+            rel: 'self',
+            href: 'http://localhost:3000/accounts/1'
+          }]
+        }
+      }));
+    });
+  });
+
+  describe('And the call failed', () => {
+    it('Should return 500', () => {
+      const create = td.replace(Account, 'create');
+      td.when(create({
+        name: 'New Account'
+      })).thenReject({});
+
+      const req = createReq({}, {
+        name: 'New Account'
+      });
+
+      const response = {};
+      const res = createRes(response);
+
+      return controller.create(req, res).then(() => {
+        expect(response.status).to.eql(500);
+      });
     });
   });
 });
