@@ -1,16 +1,16 @@
 'use strict';
 
 module.exports = {
-  up: function (queryInterface, Sequelize) {
-    return queryInterface.bulkInsert('accounts', [{
-      name: 'Wired Brain Cofee',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      name: 'Globomantics',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }]);
+    up: function (queryInterface) {
+        return queryInterface.bulkInsert('accounts', [{
+            name: 'Wired Brain Cofee',
+            createdAt: new Date(),
+            updatedAt: new Date()
+        },{
+            name: 'Globomantics',
+            createdAt: new Date(),
+            updatedAt: new Date()
+        }]);
     /*
       Add altering commands here.
       Return a promise to correctly handle asynchronicity.
@@ -21,9 +21,9 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-  },
+    },
 
-  down: function (queryInterface, Sequelize) {
+    down: function () {
     /*
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.
@@ -31,5 +31,5 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('Person', null, {});
     */
-  }
+    }
 };
