@@ -1,19 +1,18 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-    var book = sequelize.define('book', {
-        title: {
+    const household = sequelize.define('household', {
+        name: {
             type: DataTypes.STRING,
-            allowNull: false
-        },
-        author: DataTypes.STRING,
-        publicationDate: DataTypes.DATEONLY,
-        isbn: DataTypes.STRING
+            allowNull: false,
+        }
     }, {
         classMethods: {
             associate: function(models) {
                 // associations can be defined here
+                household.hasMany(models.user);
             }
         }
     });
-    return book;
+
+    return household;
 };

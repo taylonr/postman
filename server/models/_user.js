@@ -1,9 +1,9 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-    var user = sequelize.define('user', {
+    const user = sequelize.define('user', {
         email: {
-            type:DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         firstName: DataTypes.STRING,
         lastName: DataTypes.STRING
@@ -11,8 +11,11 @@ module.exports = (sequelize, DataTypes) => {
         classMethods: {
             associate: function(models) {
                 // associations can be defined here
+                user.hasOne(models.wishList);
+                user.hasOne(models.collection);
             }
         }
     });
+
     return user;
 };

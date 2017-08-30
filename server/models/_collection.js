@@ -1,14 +1,14 @@
 'use strict';
 module.exports = (sequelize) => {
-    const library = sequelize.define('library', {
+    const collection = sequelize.define('collection', {
     }, {
         classMethods: {
             associate: function(models) {
                 // associations can be defined here
-                library.hasMany(models.book);
+                collection.hasMany(models.book);
             }
         }
     });
 
-    return library;
+    return collection;
 };
