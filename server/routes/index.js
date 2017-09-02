@@ -1,4 +1,5 @@
 const accountsController = require('../accounts/account.controller');
+const booksController = require('../books/book.controller');
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -10,4 +11,6 @@ module.exports = (app) => {
   app.get('/accounts/:id', accountsController.getById);
   app.post('/accounts', accountsController.create);
   app.put('/accounts/:id', accountsController.updateById);
+
+  app.get('/books', booksController.list);
 };
