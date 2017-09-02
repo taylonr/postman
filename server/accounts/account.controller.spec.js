@@ -4,19 +4,6 @@ const td = require('testdouble');
 const controller = require('./account.controller');
 const Account = require('../models/').account;
 
-const createReq = (params = {}, body = {}) => {
-  return {
-    body: body,
-    originalUrl: 'accounts',
-    params: params,
-    protocol: 'http',
-
-    get: () => {
-      return 'localhost:3000';
-    }
-  };
-};
-
 const fakeById = (id, obj) => {
   const findById = td.replace(Account, 'findById');
   const returnObject = obj === null || obj ?
@@ -37,8 +24,10 @@ describe('When getting a specific item', () => {
 
   it('Should return a status code 200', () => {
     fakeById();
-    const req = createReq({
-      id: 1
+    const req = httpMocks.createRequest({
+      params: {
+        id: 1
+      }
     });
 
     const res = httpMocks.createResponse();
@@ -50,8 +39,10 @@ describe('When getting a specific item', () => {
 
   it('Should send the account back', () => {
     fakeById();
-    const req = createReq({
-      id: 1
+    const req = httpMocks.createRequest({
+      params: {
+        id: 1
+      }
     });
 
     const res = httpMocks.createResponse();
@@ -70,8 +61,10 @@ describe('When getting a specific item', () => {
       td.when(findById(1))
         .thenReject({});
 
-      const req = createReq({
-        id: 1
+      const req = httpMocks.createRequest({
+        params: {
+          id: 1
+        }
       });
 
       const res = httpMocks.createResponse();
@@ -86,8 +79,10 @@ describe('When getting a specific item', () => {
       td.when(findById(1))
         .thenReject('test');
 
-      const req = createReq({
-        id: 1
+      const req = httpMocks.createRequest({
+        params: {
+          id: 1
+        }
       });
 
       const res = httpMocks.createResponse();
@@ -112,8 +107,10 @@ describe('When deleting an item', () => {
   it('Should set the status of 204', () => {
     fakeDestroy();
 
-    const req = createReq({
-      id: 1
+    const req = httpMocks.createRequest({
+      params: {
+        id: 1
+      }
     });
 
     const res = httpMocks.createResponse();
@@ -126,8 +123,10 @@ describe('When deleting an item', () => {
   it('Should send an empty result', () => {
     fakeDestroy();
 
-    const req = createReq({
-      id: 1
+    const req = httpMocks.createRequest({
+      params: {
+        id: 1
+      }
     });
 
     const res = httpMocks.createResponse();
@@ -141,8 +140,10 @@ describe('When deleting an item', () => {
     it('Should return a 204', () => {
       fakeById(1, null);
 
-      const req = createReq({
-        id: 1
+      const req = httpMocks.createRequest({
+        params: {
+          id: 1
+        }
       });
 
       const res = httpMocks.createResponse();
@@ -170,10 +171,12 @@ describe('When updating an object', () => {
       update: update
     });
 
-    const req = createReq({
-      id: 1
-    }, {
-      name: 'test'
+    const req = httpMocks.createRequest({
+      params: {
+        id: 1
+      }, body: {
+        name: 'test'
+      }
     });
 
     const res = httpMocks.createResponse();
@@ -200,8 +203,10 @@ describe('When creating an object', () => {
   it('Should set status 200', () => {
     fakeCreate();
 
-    const req = createReq({}, {
-      name: 'New Account'
+    const req = httpMocks.createRequest({
+      body: {
+        name: 'New Account'
+      }
     });
 
     const res = httpMocks.createResponse();
@@ -214,9 +219,17 @@ describe('When creating an object', () => {
   it('Should include a link to itself in the respose', () => {
     fakeCreate();
 
-    const req = createReq({}, {
-      name: 'New Account'
+    const req = httpMocks.createRequest({
+      body: {
+        name: 'New Account'
+      },
+      originalUrl: 'accounts',
+      protocol: 'http',
     });
+
+    req.get = () => {
+      return 'localhost:3000';
+    };
 
     const res = httpMocks.createResponse();
 
@@ -241,8 +254,10 @@ describe('When creating an object', () => {
         name: 'New Account'
       })).thenReject({});
 
-      const req = createReq({}, {
-        name: 'New Account'
+      const req = httpMocks.createRequest({
+        body: {
+          name: 'New Account'
+        }
       });
 
       const res = httpMocks.createResponse();
