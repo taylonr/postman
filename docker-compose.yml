@@ -3,7 +3,7 @@ services:
   db:
     image: postgres
     ports:
-      - "5433:5432"
+      - "${DB_PORT}:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_DB: postman_dev
@@ -12,8 +12,7 @@ services:
     command: npm run start:${ENV}
     image: taylonr/postman
     ports:
-      - "3000:3000"
-      - "3030:3030"
+      - "${WEB_PORT}:3000"
     volumes:
       - .:/app
     depends_on:
