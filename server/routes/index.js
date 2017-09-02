@@ -7,4 +7,7 @@ module.exports = (app) => {
   app.post('/books', booksController.create);
   app.put('/books/:id', booksController.updateById);
 
+  app.use((req, res) => {
+    res.status(404).end();
+  });
 };
