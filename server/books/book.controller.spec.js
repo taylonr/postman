@@ -75,7 +75,7 @@ describe('Books controller', () => {
       });
     });
 
-    it('Should send the account back', () => {
+    it('Should send the book back', () => {
       fakeById();
       const req = httpMocks.createRequest({
         params: {
@@ -174,7 +174,7 @@ describe('Books controller', () => {
       });
     });
 
-    describe('And the account does not exit', () => {
+    describe('And the book does not exit', () => {
       it('Should return a 204', () => {
         fakeById(1, null);
 
@@ -261,7 +261,7 @@ describe('Books controller', () => {
         body: {
           name: 'New Book'
         },
-        originalUrl: 'accounts',
+        originalUrl: 'books',
         protocol: 'http',
       });
 
@@ -278,7 +278,7 @@ describe('Books controller', () => {
             name: 'New Book',
             links: [{
               rel: 'self',
-              href: 'http://localhost:3000/accounts/1'
+              href: 'http://localhost:3000/books/1'
             }]
           }
         });
