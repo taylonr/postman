@@ -9,6 +9,7 @@ describe('Books controller', () => {
   afterEach(() => {
     td.reset();
   });
+
   describe('When getting a list of books', () => {
     it('Should return ok', () => {
       const req = httpMocks.createRequest();
@@ -40,7 +41,6 @@ describe('Books controller', () => {
       });
     });
   });
-
 
   const fakeById = (id, obj) => {
     const findById = td.replace(Book, 'findById');
@@ -127,6 +127,23 @@ describe('Books controller', () => {
 
         return controller.getById(req, res).then(() => {
           expect(res._getData()).to.eql('test');
+        });
+      });
+    });
+
+    describe('And the item cannot be found', () => {
+      it('Should return a 404', () => {
+        fakeById(1, null);
+        const req = httpMocks.createRequest({
+          params: {
+            id: 1
+          }
+        });
+
+        const res = httpMocks.createResponse();
+
+        return controller.getById(req, res).then(() => {
+          expect(res.statusCode).to.eql(404);
         });
       });
     });

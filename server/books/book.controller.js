@@ -11,12 +11,6 @@ function fullUrl(req) {
   });
 }
 
-const get = (res, resp) => {
-  return resp
-    .then(responses.ok(res))
-    .catch(responses.serverError(res));
-};
-
 module.exports = {
   list: (req, res) => {
     return Book.all()
@@ -27,7 +21,15 @@ module.exports = {
   },
 
   getById(req, res) {
-    return get(res, Book.findById(req.params.id));
+    return Book.findById(req.params.id)
+      .then((data) => {
+        if(data){
+          responses.ok(res)(data);
+        } else {
+          responses.notFound(res);
+        }
+      })
+      .catch(responses.serverError(res));
   },
 
   deleteById(req, res) {

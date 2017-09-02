@@ -9,5 +9,9 @@ module.exports = {
 
   noContent: res => {
     res.status(204).send();
+  },
+
+  notFound: res => {
+    res.status(404).end();
   }
 };
