@@ -1,4 +1,5 @@
 const expect = require('chai').expect;
+const httpMocks = require('node-mocks-http');
 const td = require('testdouble');
 const controller = require('./account.controller');
 const Account = require('../models/').account;
@@ -16,19 +17,6 @@ const createReq = (params = {}, body = {}) => {
   };
 };
 
-const createRes = (fake) => {
-  const res =  {
-    status: function(code){
-      fake.status = code;
-      return this;
-    },
-    send: td.function(),
-    end: td.function()
-  };
-
-  return res;
-};
-
 const fakeById = (id, obj) => {
   const findById = td.replace(Account, 'findById');
   const returnObject = obj === null || obj ?
@@ -40,7 +28,6 @@ const fakeById = (id, obj) => {
 
   td.when(findById(id || 1))
     .thenResolve(returnObject);
-
 };
 
 describe('When getting a specific item', () => {
@@ -54,11 +41,10 @@ describe('When getting a specific item', () => {
       id: 1
     });
 
-    let response = {};
-    const res = createRes(response);
+    const res = httpMocks.createResponse();
 
     return controller.getById(req, res).then(() => {
-      return expect(response.status).to.eql(200);
+      return expect(res.statusCode).to.eql(200);
     });
   });
 
@@ -68,14 +54,13 @@ describe('When getting a specific item', () => {
       id: 1
     });
 
-    let result = {};
-    const res = createRes(result);
+    const res = httpMocks.createResponse();
 
     return controller.getById(req, res).then(() => {
-      td.verify(res.send({
+      expect(res._getData()).to.eql({
         id: 1,
         name: 'test'
-      }));
+      });
     });
   });
 
@@ -89,11 +74,10 @@ describe('When getting a specific item', () => {
         id: 1
       });
 
-      const response = {};
-      const res = createRes(response);
+      const res = httpMocks.createResponse();
 
       return controller.getById(req, res).then(() => {
-        return expect(response.status).to.eql(500);
+        return expect(res.statusCode).to.eql(500);
       });
     });
 
@@ -106,12 +90,10 @@ describe('When getting a specific item', () => {
         id: 1
       });
 
-      const response = {};
-      const res = createRes(response);
+      const res = httpMocks.createResponse();
 
       return controller.getById(req, res).then(() => {
-        return td.verify(res.send('test'));
-
+        expect(res._getData()).to.eql('test');
       });
     });
   });
@@ -133,11 +115,11 @@ describe('When deleting an item', () => {
     const req = createReq({
       id: 1
     });
-    const response = {};
-    const res = createRes(response);
+
+    const res = httpMocks.createResponse();
 
     return controller.deleteById(req, res).then(() =>{
-      return expect(response.status).to.eql(204);
+      return expect(res.statusCode).to.eql(204);
     });
   });
 
@@ -147,11 +129,11 @@ describe('When deleting an item', () => {
     const req = createReq({
       id: 1
     });
-    const response = {};
-    const res = createRes(response);
+
+    const res = httpMocks.createResponse();
 
     return controller.deleteById(req, res).then(() =>{
-      return td.verify(res.send());
+      expect(res._getData()).to.eql('');
     });
   });
 
@@ -163,11 +145,10 @@ describe('When deleting an item', () => {
         id: 1
       });
 
-      const response = {};
-      const res = createRes(response);
+      const res = httpMocks.createResponse();
 
       return controller.deleteById(req, res).then(() => {
-        return expect(response.status).to.eql(204);
+        return expect(res.statusCode).to.eql(204);
       });
 
     });
@@ -195,11 +176,10 @@ describe('When updating an object', () => {
       name: 'test'
     });
 
-    const response = {};
-    const res = createRes(response);
+    const res = httpMocks.createResponse();
 
     return controller.updateById(req, res).then(() => {
-      return expect(response.status).to.eql(200);
+      return expect(res.statusCode).to.eql(200);
     });
   });
 });
@@ -224,11 +204,10 @@ describe('When creating an object', () => {
       name: 'New Account'
     });
 
-    const response = {};
-    const res = createRes(response);
+    const res = httpMocks.createResponse();
 
     return controller.create(req, res).then(() => {
-      return expect(response.status).to.eql(200);
+      return expect(res.statusCode).to.eql(200);
     });
   });
 
@@ -239,10 +218,10 @@ describe('When creating an object', () => {
       name: 'New Account'
     });
 
-    const res = createRes({});
+    const res = httpMocks.createResponse();
 
     return controller.create(req, res).then(() => {
-      td.verify(res.send({
+      expect(res._getData()).to.eql({
         dataValues: {
           id: 1,
           name: 'New Account',
@@ -251,7 +230,7 @@ describe('When creating an object', () => {
             href: 'http://localhost:3000/accounts/1'
           }]
         }
-      }));
+      });
     });
   });
 
@@ -266,11 +245,10 @@ describe('When creating an object', () => {
         name: 'New Account'
       });
 
-      const response = {};
-      const res = createRes(response);
+      const res = httpMocks.createResponse();
 
       return controller.create(req, res).then(() => {
-        expect(response.status).to.eql(500);
+        expect(res.statusCode).to.eql(500);
       });
     });
   });

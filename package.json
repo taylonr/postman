@@ -29,6 +29,7 @@
   "devDependencies": {
     "chai": "^4.1.1",
     "mocha": "^3.5.0",
+    "node-mocks-http": "^1.6.4",
     "sequelize-cli": "^2.8.0",
     "testdouble": "^3.2.4"
   }
