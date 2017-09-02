@@ -5,15 +5,17 @@ const authorize = basicAuth({
   users: {'admin': 'admin'}
 });
 
-module.exports = (app) => {
-  app.delete('/books/:id', authorize, booksController.deleteById);
+module.exports = (app, express) => {
   app.get('/books', booksController.list);
   app.get('/books/:id', booksController.getById);
 
-  app.post('/books', authorize, booksController.create);
-  app.put('/books/:id', authorize, booksController.updateById);
+  const authorized = express.Router();
+  app.use(authorized);
 
-  app.use((req, res) => {
-    res.status(404).end();
-  });
+  authorized.use(authorize);
+
+  authorized.delete('/books/:id', booksController.deleteById);
+  authorized.post('/books', booksController.create);
+  authorized.put('/books/:id', booksController.updateById);
+
 };

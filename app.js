@@ -9,7 +9,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-require('./server/routes/')(app);
+require('./server/routes/')(app, express);
 
 app.get('*', (req, res) => res.status(404).send());
 
