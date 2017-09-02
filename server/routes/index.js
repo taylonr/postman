@@ -8,6 +8,7 @@ const authorize = basicAuth({
 module.exports = (app, express) => {
   app.get('/books', booksController.list);
   app.get('/books/:id', booksController.getById);
+  app.post('/books', booksController.create);
 
   const authorized = express.Router();
   app.use(authorized);
@@ -15,7 +16,6 @@ module.exports = (app, express) => {
   authorized.use(authorize);
 
   authorized.delete('/books/:id', booksController.deleteById);
-  authorized.post('/books', booksController.create);
   authorized.put('/books/:id', booksController.updateById);
 
 };
