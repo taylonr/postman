@@ -5,5 +5,12 @@
     "database": "postman_dev",
     "host": "db",
     "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": null,
+    "database": "postman_test",
+    "host": "db",
+    "dialect": "postgres"
   }
 }

@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start:development": "nodemon ./bin/www",
+    "start:test": "NODE_ENV=test PORT=3030 nodemon ./bin/www",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
     "db:seed": "./node_modules/.bin/sequelize db:seed:all",
     "lint:watch": "esw -w --fix ./server/**/*.js app.js",

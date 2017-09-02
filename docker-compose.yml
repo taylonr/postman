@@ -9,10 +9,11 @@ services:
       POSTGRES_DB: postman_dev
   web:
     build: .
-    command: npm run start
+    command: npm run start:${ENV}
     image: taylonr/postman
     ports:
       - "3000:3000"
+      - "3030:3030"
     volumes:
       - .:/app
     depends_on:
