@@ -1,8 +1,9 @@
 const basicAuth = require('express-basic-auth');
 const booksController = require('../books/book.controller');
+const env  = process.env.NODE_ENV || 'development';
 
 const authorize = basicAuth({
-  users: {'admin': 'admin'}
+  users: {'admin': env === 'test' ? 'admin_test' : 'admin'}
 });
 
 module.exports = (app, express) => {
