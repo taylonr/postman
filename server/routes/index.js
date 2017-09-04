@@ -8,6 +8,7 @@ const authorize = basicAuth({
 
 module.exports = (app, express) => {
   app.get('/books', booksController.list);
+  app.get('/books/search', booksController.search);
   app.get('/books/:id', booksController.getById);
   app.post('/books', booksController.create);
 

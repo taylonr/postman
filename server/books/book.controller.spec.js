@@ -323,4 +323,82 @@ describe('Books controller', () => {
       });
     });
   });
+
+  describe('When searching for a book', () => {
+    it('Should add an ilike clause for title', () => {
+      const req = httpMocks.createRequest({
+        query: {
+          title: 'waste'
+        }
+      });
+
+      const res = httpMocks.createResponse();
+
+      const findAll = td.replace(Book, 'findAll');
+      td.when(findAll({
+        where: {
+          title: {
+            $ilike: '%waste%'
+          }
+        }
+      })).thenResolve({
+        title: 'Don\'t waste your life'
+      });
+
+      return controller.search(req, res).then(() => {
+        expect(res._getData()).to.eql({
+          title: 'Don\'t waste your life'
+        });
+      });
+    });
+
+    describe('And author is passed in', () => {
+      it('Should query on author', () => {
+        const req = httpMocks.createRequest({
+          query: {
+            author: 'john'
+          }
+        });
+
+        const res = httpMocks.createResponse();
+
+        const findAll = td.replace(Book, 'findAll');
+        td.when(findAll({
+          where: {
+            author: {
+              $ilike: '%john%'
+            }
+          }
+        })).thenResolve({
+          author: 'John Piper'
+        });
+
+        return controller.search(req, res).then(() => {
+          return expect(res._getData()).to.eql({
+            author: 'John Piper'
+          });
+        });
+
+      });
+    });
+
+    describe('And title is not supplied', () => {
+      it('Should not query on title', () => {
+        const req = httpMocks.createRequest();
+
+        const res = httpMocks.createResponse();
+
+        const findAll = td.replace(Book, 'findAll');
+        td.when(findAll(undefined)).thenResolve({
+          title: 'Don\'t waste your life'
+        });
+
+        return controller.search(req, res).then(() => {
+          expect(res._getData()).to.eql({
+            title: 'Don\'t waste your life'
+          });
+        });
+      });
+    });
+  });
 });

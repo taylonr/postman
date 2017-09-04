@@ -70,5 +70,31 @@ module.exports = {
         return responses.ok(res)(acct);
       })
       .catch(responses.serverError(res));
+  },
+
+  search(req, res) {
+    let where = {};
+    if(req.query.title){
+      where.title = {
+        $ilike: `%${req.query.title}%`
+      };
+    }
+
+    if(req.query.author){
+      where.author = {
+        $ilike: `%${req.query.author}%`
+      };
+    }
+
+    let query;
+
+    if(Object.keys(where).length !== 0){
+      query = {
+        where: where
+      };
+    }
+
+    return Book
+      .findAll(query).then(responses.ok(res));
   }
 };
