@@ -7,17 +7,24 @@ module.exports = () => {
     createdAt: new Date(),
     updatedAt: new Date()
   },{
-    title: 'The Total Money Makeover',
-    author: 'Dave Ramsey',
-    publicationDate: new Date(2007, 1, 6),
-    isbn: '0785289089',
-    createdAt: new Date(),
-    updatedAt: new Date()
-  },{
     title: 'Van Til\'s Apologetic',
     author: 'Greg Bahnsen',
     publicationDate: new Date(1998, 6, 1),
     isbn: '0875520987',
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },{
+    title: 'Lectures to My Students',
+    author: 'Charles Spurgeon',
+    publicationDate: new Date(2010, 4, 15),
+    isbn: '1598565176',
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },{
+    title: 'The Screwtape Letters',
+    author: 'C. S. Lewis',
+    publicationDate: new Date(2015, 3, 21),
+    isbn: '0060652934',
     createdAt: new Date(),
     updatedAt: new Date()
   }];

@@ -86,15 +86,17 @@ module.exports = {
       };
     }
 
-    let query;
+    let query = {
+      attributes: ['id', 'title', 'author']
+    };
 
     if(Object.keys(where).length !== 0){
-      query = {
-        where: where
-      };
+      query.where = where;
     }
 
     return Book
-      .findAll(query).then(responses.ok(res));
+      .findAll(query)
+      .then(responses.ok(res))
+      .catch(responses.serverError(res));
   }
 };

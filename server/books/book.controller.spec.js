@@ -336,6 +336,7 @@ describe('Books controller', () => {
 
       const findAll = td.replace(Book, 'findAll');
       td.when(findAll({
+        attributes: ['id', 'title', 'author'],
         where: {
           title: {
             $ilike: '%waste%'
@@ -364,6 +365,7 @@ describe('Books controller', () => {
 
         const findAll = td.replace(Book, 'findAll');
         td.when(findAll({
+          attributes: ['id', 'title', 'author'],
           where: {
             author: {
               $ilike: '%john%'
@@ -389,7 +391,9 @@ describe('Books controller', () => {
         const res = httpMocks.createResponse();
 
         const findAll = td.replace(Book, 'findAll');
-        td.when(findAll(undefined)).thenResolve({
+        td.when(findAll({
+          attributes: ['id', 'title', 'author']
+        })).thenResolve({
           title: 'Don\'t waste your life'
         });
 
