@@ -1,0 +1,44 @@
+<h1>Add a book</h1>
+
+<form>
+  <input type='text' id='title' placeholder='Title' />
+  <input type='text' id='author' placeholder='Author' />
+  <input type='text' id='isbn' placeholder='ISBN' />
+  <input type='text' id='releaseDate' placeholder='Release Date' />
+
+  <input type='submit' value='Submit' />
+</form>
+
+<script
+src="https://code.jquery.com/jquery-3.2.1.min.js"
+integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+crossorigin="anonymous"></script>
+<script type='text/javascript'>
+$('form').on('submit', (e) => {
+  e.preventDefault();
+  const data = {
+    'title': $('#title').val(),
+    'author': $('#author').val(),
+    'isbn': $('#isbn').val(),
+    'releaseDate': $('#releaseDate').val()
+  };
+
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost:3000/books",
+    "method": "POST",
+    "headers": {
+      "content-type": "application/json",
+      "ps-token": "ROM831ESV",
+      "cache-control": "no-cache",
+      "postman-token": "94e03697-36ba-33d0-bf88-eae6aeb4380e"
+    },
+    "data": JSON.stringify(data)
+  }
+
+  $.ajax(settings).done(function (response) {
+    $('form')[0].reset();
+  });
+});
+</script>

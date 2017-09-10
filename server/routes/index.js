@@ -1,3 +1,4 @@
+const path = require('path');
 const basicAuth = require('express-basic-auth');
 const booksController = require('../books/book.controller');
 const env  = process.env.NODE_ENV || 'development';
@@ -16,6 +17,10 @@ const apiToken = (req, res, next) => {
 };
 
 module.exports = (app, express) => {
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../', 'index.html'));
+  });
+
   app.use(apiToken);
 
   app.get('/books', booksController.list);
