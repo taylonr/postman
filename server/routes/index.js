@@ -17,7 +17,7 @@ const apiToken = (req, res, next) => {
 };
 
 module.exports = (app, express) => {
-  app.get('/', (req, res) => {
+  app.get('/ui', (req, res) => {
     res.sendFile(path.join(__dirname, '../', 'index.html'));
   });
 
