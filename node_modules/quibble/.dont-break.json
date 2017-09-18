@@ -1,0 +1,7 @@
+[
+  {
+    "name": "testdouble",
+    "repoUrl": "https://github.com/testdouble/testdouble.js",
+    "command": "npm run test:example:node"
+  }
+]

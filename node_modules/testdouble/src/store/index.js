@@ -1,0 +1,32 @@
+import _ from '../util/lodash-wrap'
+import { EventEmitter } from 'events'
+
+const storeEmitter = new EventEmitter()
+let globalStore = []
+
+export default {
+  onReset (func) {
+    storeEmitter.on('reset', func)
+  },
+
+  reset () {
+    globalStore = []
+    storeEmitter.emit('reset')
+  },
+
+  for (testDouble, createIfNew = true) {
+    const entry = _.find(globalStore, {testDouble})
+    if (entry) {
+      return entry
+    } else if (createIfNew) {
+      return _.tap({
+        testDouble,
+        stubbings: [],
+        calls: [],
+        verifications: []
+      }, newEntry =>
+        globalStore.push(newEntry)
+      )
+    }
+  }
+}
