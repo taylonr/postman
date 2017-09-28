@@ -8,7 +8,7 @@ const authorize = basicAuth({
 });
 
 const apiToken = (req, res, next) => {
-  const token = req.get('PS-TOKEN');
+  const token = req.get('G-TOKEN');
   if (token === 'ROM831ESV') {
     next();
   } else {
@@ -19,6 +19,10 @@ const apiToken = (req, res, next) => {
 module.exports = (app, express) => {
   app.get('/ui', (req, res) => {
     res.sendFile(path.join(__dirname, '../', 'index.html'));
+  });
+
+  app.get('/landing', (req, res) => {
+    res.sendFile(path.join(__dirname, '../', 'landing.html'));
   });
 
   app.use(apiToken);
