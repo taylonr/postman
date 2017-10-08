@@ -28,9 +28,10 @@ module.exports = (app, express) => {
   app.use(apiToken);
 
   app.get('/books', booksController.list);
+  app.post('/books', booksController.create);
   app.get('/books/search', booksController.search);
   app.get('/books/:id', booksController.getById);
-  app.post('/books', booksController.create);
+  app.put('/books/:id', booksController.updateById);
 
   const authorized = express.Router();
   app.use(authorized);

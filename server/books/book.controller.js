@@ -51,15 +51,15 @@ module.exports = {
       .findById(req.params.id)
       .then((acct) => {
         return acct
-          .update({
-            name: req.body.name
+          .update(req.body, {
+            where: {id: req.params.id},
+            fields: ['title', 'author', 'publicationDate', 'isbn']
           })
           .then(responses.ok(res));
       });
   },
 
   create(req, res) {
-    console.log('CREATE', req.body);
     return Book
       .create(req.body)
       .then((acct) => {

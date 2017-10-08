@@ -215,7 +215,10 @@ describe('Books controller', () => {
     it('Should return a 200', () => {
       const update = td.replace(Book, 'update');
       td.when(update({
-        name: 'test'
+        title: 'test'
+      }, {
+        where: {id: 1},
+        fields: ['title', 'author', 'publicationDate', 'isbn']
       })).thenResolve({
         id: 1,
         name: 'test'
@@ -230,7 +233,7 @@ describe('Books controller', () => {
         params: {
           id: 1
         }, body: {
-          name: 'test'
+          title: 'test'
         }
       });
 
