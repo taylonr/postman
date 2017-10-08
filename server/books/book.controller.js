@@ -59,6 +59,7 @@ module.exports = {
   },
 
   create(req, res) {
+    console.log('CREATE', req.body);
     return Book
       .create(req.body)
       .then((acct) => {
