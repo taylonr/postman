@@ -11,7 +11,7 @@ function fullUrl(req) {
 }
 
 module.exports = {
-  create: (model, req, res) => {
+  create: model => (req, res)  => {
     return model
       .create(req.body)
       .then((acct) => {
@@ -24,7 +24,7 @@ module.exports = {
       .catch(responses.serverError(res));
   },
 
-  deleteById: (model, req, res) => {
+  deleteById: model => (req, res) => {
     return model
       .findById(req.params.id)
       .then((acct) => {
@@ -37,7 +37,7 @@ module.exports = {
       });
   },
 
-  getById: (model, req, res) => {
+  getById: model => (req, res) => {
     return model.findById(req.params.id)
       .then((data) => {
         if (data) {
@@ -50,7 +50,7 @@ module.exports = {
       .catch(responses.serverError(res));
   },
 
-  list: (model, res) => {
+  list: model => (req, res) => {
     return model.all()
       .then(responses.ok(res))
       .catch((err) => {

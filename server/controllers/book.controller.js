@@ -5,17 +5,11 @@ const Book = require('../models').book;
 
 
 module.exports = {
-  list(req, res) {
-      return crud.list(Book, res);
-  },
+  list: crud.list(Book),
 
-  getById(req, res) {
-      return crud.getById(Book, req, res);
-  },
+  getById: crud.getById(Book),
 
-  deleteById(req, res) {
-      return crud.deleteById(Book, req, res);
-  },
+  deleteById: crud.deleteById(Book),
 
   updateById(req, res) {
     return Book
@@ -30,9 +24,7 @@ module.exports = {
       });
   },
 
-  create(req, res) {
-      return crud.create(Book, req, res);
-  },
+  create: crud.create(Book),
 
   search(req, res) {
     let where = {};
