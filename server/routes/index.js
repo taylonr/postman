@@ -1,6 +1,6 @@
 const path = require('path');
 const basicAuth = require('express-basic-auth');
-const booksController = require('../books/book.controller');
+const booksController = require('../controllers/book.controller');
 const env  = process.env.NODE_ENV || 'development';
 
 const authorize = basicAuth({
