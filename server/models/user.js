@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING
+    lastName: DataTypes.STRING,
+    wishlistId: DataTypes.INTEGER
   });
   return user;
 };

@@ -1,5 +1,5 @@
 'use strict';
-module.exports = (sequelize) => {
+module.exports = (sequelize, DataTypes) => {
   const wishlist = sequelize.define('wishlist', {
     name: DataTypes.STRING,
   });
