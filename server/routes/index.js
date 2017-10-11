@@ -37,6 +37,7 @@ module.exports = (app, express) => {
   app.get('/households', householdsController.list);
   app.post('/households', householdsController.create);
   app.get('/households/:id', householdsController.getById);
+  app.get('/households/:householdId/users', usersController.getByHouseholdId);
 
   app.get('/users', usersController.list);
   app.post('/users', usersController.create);
