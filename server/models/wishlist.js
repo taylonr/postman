@@ -1,14 +1,11 @@
 'use strict';
 module.exports = (sequelize) => {
   const wishlist = sequelize.define('wishlist', {
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-        wishlist.hasMany(models.book);
-      }
-    }
+    name: DataTypes.STRING,
   });
 
+  wishlist.associate = (models) => {
+    wishlist.belongsToMany(models.book, {through: 'wishlistBooks'});
+  }
   return wishlist;
 };

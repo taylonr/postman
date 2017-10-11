@@ -9,5 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     publicationDate: DataTypes.DATEONLY,
     isbn: DataTypes.STRING
   });
+
+  book.associate = (models) => {
+    book.belongsToMany(models.wishlist, {through: 'wishlistBooks'});
+  }
   return book;
 };
