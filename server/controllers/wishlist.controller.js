@@ -19,12 +19,12 @@ module.exports = new CrudController(Wishlist, {
           });
       });
   },
-  getById: (req, res) => {
+  getBooks: (req, res) => {
     return Wishlist
       .findAll({
         attributes: ['id', 'name'],
         where: {
-          id: req.params.id
+          id: req.params.wishlistId
         },
         include: [{
           model: Book,

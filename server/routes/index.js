@@ -46,6 +46,7 @@ module.exports = (app, express) => {
 
   setUpRoutes(app, 'wishlists', wishlistController);
   app.post('/wishlists/:wishlistId/books/:bookId', wishlistController.addBook)
+  app.get('/wishlists/:wishlistId/books', wishlistController.getBooks)
 
   const authorized = express.Router();
   app.use(authorized);
