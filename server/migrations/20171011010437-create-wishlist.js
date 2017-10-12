@@ -42,6 +42,14 @@ module.exports = {
             model: 'books',
             key: 'id'
           }
+        },
+        createdAt: {
+          allowNull: false,
+          type: Sequelize.DATE
+        },
+        updatedAt: {
+          allowNull: false,
+          type: Sequelize.DATE
         }
       })
     });

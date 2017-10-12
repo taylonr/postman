@@ -3,6 +3,7 @@ const basicAuth = require('express-basic-auth');
 const booksController = require('../controllers/book.controller');
 const householdsController = require('../controllers/household.controller');
 const usersController = require('../controllers/user.controller');
+const wishlistController = require('../controllers/wishlist.controller');
 const env  = process.env.NODE_ENV || 'development';
 
 const authorize = basicAuth({
@@ -18,6 +19,12 @@ const apiToken = (req, res, next) => {
   }
 };
 
+const setUpRoutes = (app, name, controller) => {
+  app.get(`/${name}`, controller.list);
+  app.post(`/${name}`, controller.create);
+  app.get(`/${name}/:id`, controller.getById);
+};
+
 module.exports = (app, express) => {
   app.get('/ui', (req, res) => {
     res.sendFile(path.join(__dirname, '../', 'index.html'));
@@ -29,19 +36,16 @@ module.exports = (app, express) => {
 
   app.use(apiToken);
 
-  app.get('/books', booksController.list);
-  app.post('/books', booksController.create);
-  app.get('/books/:id', booksController.getById);
+  setUpRoutes(app, 'books', booksController);
   app.get('/books/search', booksController.search);
 
-  app.get('/households', householdsController.list);
-  app.post('/households', householdsController.create);
-  app.get('/households/:id', householdsController.getById);
+  setUpRoutes(app, 'households', householdsController);
   app.get('/households/:householdId/users', usersController.getByHouseholdId);
 
-  app.get('/users', usersController.list);
-  app.post('/users', usersController.create);
-  app.get('/users/:id', usersController.getById);
+  setUpRoutes(app, 'users', usersController);
+
+  setUpRoutes(app, 'wishlists', wishlistController);
+  app.post('/wishlists/:wishlistId/books/:bookId', wishlistController.addBook)
 
   const authorized = express.Router();
   app.use(authorized);
