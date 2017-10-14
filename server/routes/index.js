@@ -41,6 +41,7 @@ module.exports = (app, express) => {
 
   setUpRoutes(app, 'households', householdsController);
   app.get('/households/:householdId/users', usersController.getByHouseholdId);
+  app.get('/households/:householdId/wishlistBooks', wishlistController.getByHouseholdId);
 
   setUpRoutes(app, 'users', usersController);
 

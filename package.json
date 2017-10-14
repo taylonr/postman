@@ -25,6 +25,7 @@
     "pg": "^7.1.2",
     "pg-hstore": "^2.3.2",
     "pg-promise": "^6.5.0",
+    "ramda": "^0.25.0",
     "sequelize": "^4.6.0",
     "serve-favicon": "~2.4.2"
   },

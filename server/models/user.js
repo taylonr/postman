@@ -9,5 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     lastName: DataTypes.STRING,
     wishlistId: DataTypes.INTEGER
   });
+
+  user.associate = (models) => {
+    user.belongsTo(models.wishlist);
+  };
   return user;
 };

@@ -16,6 +16,7 @@ function split (matcher, mapper, options) {
   var decoder = new Decoder()
   var soFar = ''
   var maxLength = options && options.maxLength;
+  var trailing = options && options.trailing === false ? false : true
   if('function' === typeof matcher)
     mapper = matcher, matcher = null
   if (!matcher)
@@ -41,7 +42,7 @@ function split (matcher, mapper, options) {
     soFar = pieces.pop()
 
     if (maxLength && soFar.length > maxLength)
-      stream.emit('error', new Error('maximum buffer reached'))
+      return stream.emit('error', new Error('maximum buffer reached'))
 
     for (var i = 0; i < pieces.length; i++) {
       var piece = pieces[i]
@@ -55,9 +56,8 @@ function split (matcher, mapper, options) {
   function () {
     if(decoder.end)
       next(this, decoder.end())
-    if(soFar != null)
+    if(trailing && soFar != null)
       emit(this, soFar)
     this.queue(null)
   })
 }
-

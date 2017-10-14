@@ -2,7 +2,7 @@
 
 [![build status](https://secure.travis-ci.org/dominictarr/split.png)](http://travis-ci.org/dominictarr/split)
 
-Break up a stream and reassemble it so that each line is a chunk. matcher may be a `String`, or a `RegExp` 
+Break up a stream and reassemble it so that each line is a chunk. matcher may be a `String`, or a `RegExp`
 
 Example, read every line in a file ...
 
@@ -10,15 +10,15 @@ Example, read every line in a file ...
   fs.createReadStream(file)
     .pipe(split())
     .on('data', function (line) {
-      //each chunk now is a seperate line!
+      //each chunk now is a separate line!
     })
 
 ```
 
-`split` takes the same arguments as `string.split` except it defaults to '/\r?\n/' instead of ',', and the optional `limit` paremeter is ignored.
+`split` takes the same arguments as `string.split` except it defaults to '/\r?\n/' instead of ',', and the optional `limit` parameter is ignored.
 [String#split](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/split)
 
-`split` takes an optional options object on it's third argument.
+`split` takes an optional options object on its third argument.
 
 ``` js
   split(matcher, mapper, options)
@@ -33,9 +33,15 @@ Valid options:
   split(JSON.parse, null, { maxLength: 2})
 ```
 
+* trailing - By default the last buffer not delimited by a newline or `matcher` will be emitted. To prevent this set `options.trailing` to `false`.
+
+``` js
+  split(JSON.parse, null, { trailing: false })
+```
+
 ## keep matched splitter
 
-As with `Array#split`, if you split by a regular expression with a matching group,
+As with `String#split`, if you split by a regular expression with a matching group,
 the matches will be retained in the collection.
 
 ```
