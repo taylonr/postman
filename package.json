@@ -6,6 +6,7 @@
     "start:dev": "nodemon ./bin/www",
     "start:test": "NODE_ENV=test PORT=3000 nodemon ./bin/www",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
+    "db:reset": "./node_modules/.bin/sequelize db:migrate:undo:all",
     "db:seed": "./node_modules/.bin/sequelize db:seed:all",
     "lint:watch": "esw -w --fix ./server/**/*.js app.js",
     "test:watch": "mocha -w -R progress ./server/**/*.spec.js",
