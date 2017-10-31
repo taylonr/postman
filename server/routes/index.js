@@ -49,6 +49,10 @@ module.exports = (app, express) => {
   app.post('/wishlists/:wishlistId/books/:bookId', wishlistController.addBook)
   app.get('/wishlists/:wishlistId/books', wishlistController.getBooks)
 
+  app.get('*', (req, res) => {
+    res.status(404).end();
+  });
+
   const authorized = express.Router();
   app.use(authorized);
 
@@ -56,5 +60,4 @@ module.exports = (app, express) => {
 
   authorized.delete('/books/:id', booksController.deleteById);
   authorized.put('/books/:id', booksController.updateById);
-
 };

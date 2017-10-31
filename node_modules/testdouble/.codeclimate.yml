@@ -1,0 +1,17 @@
+engines:
+  coffeelint:
+    enabled: true
+  fixme:
+    enabled: true
+
+ratings:
+  paths:
+    - src/**
+    - test/**
+exclude_paths:
+  - dist/**/*
+  - docs/**/*
+  - examples/**/*
+  - lib/**/*
+  - node_modules/**/*
+  - testem.js
