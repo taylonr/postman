@@ -1,0 +1,93 @@
+{
+	"id": "9aca7637-c2dd-3acd-093a-92351d5efb3f",
+	"name": "Users",
+	"description": "",
+	"order": [
+		"322b3c2c-117a-155b-507e-fbc462542169",
+		"e91e602c-3236-3311-aad6-915be24edd69"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1508692112597,
+	"owner": "2691776",
+	"public": false,
+	"requests": [
+		{
+			"id": "322b3c2c-117a-155b-507e-fbc462542169",
+			"headers": "Content-Type: application/json\nG-Token: ROM831ESV\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "G-Token",
+					"value": "ROM831ESV",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://{{host}}/users",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "pm.globals.set(\"userId\", pm.response.json().id);",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508692299198,
+			"name": "Create User",
+			"description": "",
+			"collectionId": "9aca7637-c2dd-3acd-093a-92351d5efb3f",
+			"responses": [],
+			"rawModeData": "{\n\t\"email\": \"taylonr@mailinator.com\",\n\t\"firstName\": \"Nate\",\n\t\"lastName\": \"Taylor\"\n}"
+		},
+		{
+			"id": "e91e602c-3236-3311-aad6-915be24edd69",
+			"headers": "Authorization: {{auth}}\nContent-Type: application/json\nG-Token: ROM831ESV\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "{{auth}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "G-Token",
+					"value": "ROM831ESV",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://{{host}}/users/{{userId}}",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "const user = pm.response.json();\n\npm.test(\"Updated email\", function () {\n    pm.expect(user.email).to.eql('taylonr@gmail.com');\n});\n\npm.test(\"First name unchanged\", function () {\n    pm.expect(user.firstName).to.eql('Nate');\n});\n\npm.test(\"Last name unchanged\", function () {\n    pm.expect(user.lastName).to.eql('Taylor'); \n});\n\npm.globals.unset(\"userId\");\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1508692858102,
+			"name": "Update User",
+			"description": "",
+			"collectionId": "9aca7637-c2dd-3acd-093a-92351d5efb3f",
+			"responses": [],
+			"rawModeData": "{\n\t\"email\": \"taylonr@gmail.com\"\n}"
+		}
+	]
+}

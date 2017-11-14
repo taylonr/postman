@@ -9,6 +9,7 @@
     "db:seed": "./node_modules/.bin/sequelize db:seed:all",
     "lint:watch": "esw -w --fix ./server/**/*.js app.js",
     "test:watch": "mocha -w -R progress ./server/**/*.spec.js",
+    "postmanTests": "newman run ./postman_exports/collections/Users.postman_collection.json -e ./postman_exports/environments/Dev.postman_environment.json",
     "watch": "npm run test:watch & npm run lint:watch"
   },
   "dependencies": {
@@ -32,6 +33,7 @@
   "devDependencies": {
     "chai": "^4.1.1",
     "mocha": "^3.5.0",
+    "newman": "^3.8.3",
     "node-mocks-http": "^1.6.4",
     "sequelize-cli": "^2.8.0",
     "testdouble": "^3.2.4"

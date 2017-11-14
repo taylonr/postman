@@ -27,5 +27,17 @@ module.exports = new CrudController(User, {
       }
     })
     .catch(responses.serverError(res));;
+  },
+  updateById: (req, res) => {
+    return User
+      .findById(req.params.id)
+      .then((user) => {
+        return user
+          .update(req.body, {
+            where: { id: req.params.id },
+            fields: Object.keys(req.body)
+          })
+          .then(responses.ok(res));
+      });
   }
 });

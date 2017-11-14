@@ -1,0 +1,19 @@
+[{
+  "users": [{
+    "email": "\"taylonr@gmail.com\"",
+    "firstName": "\"Nate\"",
+    "lastName": "\"Taylor\""
+  },{
+    "email": "\"charles@mailinator.com\"",
+    "firstName": "\"Charles\"",
+    "lastName": "\"Spurgeon\""
+  },{
+    "email": "\"jon@mailinator.com\"",
+    "firstName": "\"Jonathan\"",
+    "lastName": "\"Edwards\""
+  },{
+    "email": "\"cs@mailinator.com\"",
+    "firstName": "\"C.S.\"",
+    "lastName": "\"Lewis\""
+  }]
+}]

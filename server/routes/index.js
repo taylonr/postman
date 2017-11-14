@@ -56,5 +56,6 @@ module.exports = (app, express) => {
 
   authorized.delete('/books/:id', booksController.deleteById);
   authorized.put('/books/:id', booksController.updateById);
+  authorized.put('/users/:id', usersController.updateById);
 
 };
