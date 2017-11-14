@@ -1,0 +1,53 @@
+<input type='text' id='mock' placeholder='Mock Url' style="width: 400px" />
+<input type='text' id='key' placeholder='API Key' style="width: 400px" />
+<button type="button">Get Households</button>
+
+<div class="container"></div>
+
+
+<script
+src="https://code.jquery.com/jquery-3.2.1.min.js"
+integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+crossorigin="anonymous"></script>
+<script type='text/javascript'>
+    const createSettings = (url) => {
+        return {
+            "async": true,
+            "crossDomain": true,
+            "url": url,
+            "method": "GET",
+            "headers": {
+                "cache-control": "no-cache",
+                "x-api-key": $('#key').val()
+            }
+        };
+    };
+
+    $('button').on('click', () => {
+        const settings = createSettings($('#mock').val() + '/households');
+        $.ajax(settings).done(function (response) {
+            const households = JSON.parse(response);
+            const body = households.reduce((init, r) => {
+                return init = init + `<li data-url="${$('#mock').val()}/households/${r.id}/ownedBooks">${r.name}</li>`;
+            }, '');
+
+            const html = `<ul>${body}</ul>`;
+            $('.container').html(html);
+        });
+    });
+
+    $('.container').on('click', 'li', (evt) => {
+        const url = $(evt.target).data('url');
+        const settings = createSettings(url);
+        $.ajax(settings).done(function(response){
+            const books = JSON.parse(response);
+
+            const body = books.reduce((html, b) => {
+                return html = html + `<li>${b.title} - ${b.author}</li>`;
+            }, '');
+
+            const html = `<ul>${body}</ul>`;
+            $('.container').html(html);
+        });
+    });
+</script>

@@ -30,6 +30,10 @@ module.exports = (app, express) => {
     res.sendFile(path.join(__dirname, '../', 'index.html'));
   });
 
+  app.get('/mock', (req, res) => {
+    res.sendFile(path.join(__dirname, '../', 'mock.html'));
+  });
+
   app.get('/landing', (req, res) => {
     res.sendFile(path.join(__dirname, '../', 'landing.html'));
   });
@@ -48,6 +52,10 @@ module.exports = (app, express) => {
   setUpRoutes(app, 'wishlists', wishlistController);
   app.post('/wishlists/:wishlistId/books/:bookId', wishlistController.addBook)
   app.get('/wishlists/:wishlistId/books', wishlistController.getBooks)
+
+  app.get('*', (req, res) => {
+    res.status(404).end();
+  });
 
   const authorized = express.Router();
   app.use(authorized);
