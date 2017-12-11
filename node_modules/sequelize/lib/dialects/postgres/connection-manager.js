@@ -1,5 +1,6 @@
 'use strict';
 
+const _ = require('lodash');
 const AbstractConnectionManager = require('../abstract/connection-manager');
 const Utils = require('../../utils');
 const debug = Utils.getLogger().debugContext('connection:pg');
@@ -35,7 +36,6 @@ class ConnectionManager extends AbstractConnectionManager {
 
   // Expose this as a method so that the parsing may be updated when the user has added additional, custom types
   _refreshTypeParser(dataType) {
-
     if (dataType.types.postgres.oids) {
       for (const oid of dataType.types.postgres.oids) {
         this.lib.types.setTypeParser(oid, value => dataType.parse(value, oid, this.lib.types.getTypeParser));
@@ -54,15 +54,14 @@ class ConnectionManager extends AbstractConnectionManager {
   }
 
   connect(config) {
-
     config.user = config.username;
-    const connectionConfig = Utils._.pick(config, [
+    const connectionConfig = _.pick(config, [
       'user', 'password', 'host', 'database', 'port'
     ]);
 
     if (config.dialectOptions) {
-      Utils._.merge(connectionConfig,
-        Utils._.pick(config.dialectOptions, [
+      _.merge(connectionConfig,
+        _.pick(config.dialectOptions, [
         // see [http://www.postgresql.org/docs/9.3/static/runtime-config-logging.html#GUC-APPLICATION-NAME]
           'application_name',
           // choose the SSL mode with the PGSSLMODE environment variable
@@ -79,7 +78,9 @@ class ConnectionManager extends AbstractConnectionManager {
           'binary',
           // This should help with backends incorrectly considering idle clients to be dead and prematurely disconnecting them.
           // this feature has been added in pg module v6.0.0, check pg/CHANGELOG.md
-          'keepAlive'
+          'keepAlive',
+          // Times out queries after a set time in milliseconds. Added in pg v7.3
+          'statement_timeout'
         ]));
     }
 
@@ -147,33 +148,21 @@ class ConnectionManager extends AbstractConnectionManager {
         }
       }
 
-      // oids for hstore and geometry are dynamic - so select them at connection time
-      const supportedVersion = this.sequelize.options.databaseVersion !== 0 && semver.gte(this.sequelize.options.databaseVersion, '8.3.0');
-      if (dataTypes.HSTORE.types.postgres.oids.length === 0 && supportedVersion) {
-        query += 'SELECT typname, oid, typarray FROM pg_type WHERE typtype = \'b\' AND typname IN (\'hstore\', \'geometry\', \'geography\')';
+      if (query) {
+        return connection.query(query);
       }
-
-      return new Promise((resolve, reject) => connection.query(query, (error, result) => error ? reject(error) : resolve(result))).then(results => {
-        const result = Array.isArray(results) ? results.pop() : results;
-        
-        for (const row of result.rows) {
-          let type;
-          if (row.typname === 'geometry') {
-            type = dataTypes.postgres.GEOMETRY;
-          } else if (row.typname === 'hstore') {
-            type = dataTypes.postgres.HSTORE;
-          } else if (row.typname === 'geography') {
-            type = dataTypes.postgres.GEOGRAPHY;
-          }
-
-          type.types.postgres.oids.push(row.oid);
-          type.types.postgres.array_oids.push(row.typarray);
-
-          this._refreshTypeParser(type);
-        }
-      });
+    }).tap(connection => {
+      if (
+        dataTypes.GEOGRAPHY.types.postgres.oids.length === 0 &&
+        dataTypes.GEOMETRY.types.postgres.oids.length === 0 &&
+        dataTypes.HSTORE.types.postgres.oids.length === 0 &&
+        dataTypes.ENUM.types.postgres.oids.length === 0
+      ) {
+        return this._refreshDynamicOIDs(connection);
+      }
     });
   }
+
   disconnect(connection) {
     return new Promise(resolve => {
       connection.end();
@@ -184,9 +173,57 @@ class ConnectionManager extends AbstractConnectionManager {
   validate(connection) {
     return connection._invalid === undefined;
   }
+
+  _refreshDynamicOIDs(connection) {
+    const databaseVersion = this.sequelize.options.databaseVersion;
+    const supportedVersion = '8.3.0';
+
+    // Check for supported version
+    if ( (databaseVersion && semver.gte(databaseVersion, supportedVersion)) === false) {
+      return Promise.resolve();
+    }
+
+    // Refresh dynamic OIDs for some types
+    // These include, Geometry / HStore / Enum
+    return (connection || this.sequelize).query(
+      "SELECT typname, typtype, oid, typarray FROM pg_type WHERE (typtype = 'b' AND typname IN ('hstore', 'geometry', 'geography')) OR (typtype = 'e')"
+    ).then(results => {
+      const result = Array.isArray(results) ? results.pop() : results;
+
+      // Reset OID mapping for dynamic type
+      [
+        dataTypes.postgres.GEOMETRY,
+        dataTypes.postgres.HSTORE,
+        dataTypes.postgres.GEOGRAPHY,
+        dataTypes.postgres.ENUM
+      ].forEach(type => {
+        type.types.postgres.oids = [];
+        type.types.postgres.array_oids = [];
+      });
+
+      for (const row of result.rows) {
+        let type;
+
+        if (row.typname === 'geometry') {
+          type = dataTypes.postgres.GEOMETRY;
+        } else if (row.typname === 'hstore') {
+          type = dataTypes.postgres.HSTORE;
+        } else if (row.typname === 'geography') {
+          type = dataTypes.postgres.GEOGRAPHY;
+        } else if (row.typtype === 'e') {
+          type = dataTypes.postgres.ENUM;
+        }
+
+        type.types.postgres.oids.push(row.oid);
+        type.types.postgres.array_oids.push(row.typarray);
+
+        this._refreshTypeParser(type);
+      }
+    });
+  }
 }
 
-Utils._.extend(ConnectionManager.prototype, AbstractConnectionManager.prototype);
+_.extend(ConnectionManager.prototype, AbstractConnectionManager.prototype);
 
 module.exports = ConnectionManager;
 module.exports.ConnectionManager = ConnectionManager;

@@ -4,6 +4,7 @@ const Utils = require('./../utils');
 const Helpers = require('./helpers');
 const _ = require('lodash');
 const Association = require('./base');
+const Op = require('../operators');
 
 /**
  * One-to-many association
@@ -117,7 +118,7 @@ class HasMany extends Association {
     const constraintOptions = _.clone(this.options); // Create a new options object for use with addForeignKeyConstraints, to avoid polluting this.options in case it is later used for a n:m
     newAttributes[this.foreignKey] = _.defaults({}, this.foreignKeyAttribute, {
       type: this.options.keyType || this.source.rawAttributes[this.sourceKeyAttribute].type,
-      allowNull : true
+      allowNull: true
     });
 
     if (this.options.constraints !== false) {
@@ -192,7 +193,7 @@ class HasMany extends Association {
         delete options.limit;
       } else {
         where[association.foreignKey] = {
-          $in: values
+          [Op.in]: values
         };
         delete options.groupedLimit;
       }
@@ -202,7 +203,7 @@ class HasMany extends Association {
 
 
     options.where = options.where ?
-      {$and: [where, options.where]} :
+      {[Op.and]: [where, options.where]} :
       where;
 
     if (options.hasOwnProperty('scope')) {
@@ -249,7 +250,7 @@ class HasMany extends Association {
 
     options = Utils.cloneDeep(options);
     options.attributes = [
-      [sequelize.fn('COUNT', sequelize.col(model.primaryKeyField)), 'count']
+      [sequelize.fn('COUNT', sequelize.col(model.name.concat('.', model.primaryKeyField))), 'count']
     ];
     options.raw = true;
     options.plain = true;
@@ -277,7 +278,7 @@ class HasMany extends Association {
       raw: true
     });
 
-    where.$or = targetInstances.map(instance => {
+    where[Op.or] = targetInstances.map(instance => {
       if (instance instanceof association.target) {
         return instance.where();
       } else {
@@ -288,7 +289,7 @@ class HasMany extends Association {
     });
 
     options.where = {
-      $and: [
+      [Op.and]: [
         where,
         options.where
       ]

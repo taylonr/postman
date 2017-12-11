@@ -1,24 +1,14 @@
 'use strict';
-var isUtf8 = require('is-utf8');
-
-var stripBom = module.exports = function (arg) {
-	if (typeof arg === 'string') {
-		return arg.replace(/^\ufeff/g, '');
+module.exports = x => {
+	if (typeof x !== 'string') {
+		throw new TypeError('Expected a string, got ' + typeof x);
 	}
 
-	if (Buffer.isBuffer(arg) && isUtf8(arg) &&
-		arg[0] === 0xef && arg[1] === 0xbb && arg[2] === 0xbf) {
-		return arg.slice(3);
+	// Catches EFBBBF (UTF-8 BOM) because the buffer-to-string
+	// conversion translates it to FEFF (UTF-16 BOM)
+	if (x.charCodeAt(0) === 0xFEFF) {
+		return x.slice(1);
 	}
 
-	return arg;
-};
-
-stripBom.stream = function () {
-	var firstChunk = require('first-chunk-stream');
-
-	return firstChunk({minSize: 3}, function (chunk, enc, cb) {
-		this.push(stripBom(chunk));
-		cb();
-	});
+	return x;
 };

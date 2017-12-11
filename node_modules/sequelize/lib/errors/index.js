@@ -1,5 +1,7 @@
 'use strict';
 
+const _ = require('lodash');
+
 /**
  * Sequelize provides a host of custom error classes, to allow you to do easier debugging. All of these errors are exposed on the sequelize object and the sequelize constructor.
  * All sequelize errors inherit from the base JS error object.
@@ -11,7 +13,6 @@ class BaseError extends Error {
   constructor(message) {
     super(message);
     this.name = 'SequelizeBaseError';
-    this.message = message;
     Error.captureStackTrace(this, this.constructor);
   }
 }
@@ -36,7 +37,7 @@ exports.SequelizeScopeError = SequelizeScopeError;
  * @param {string} message Error message
  * @param {Array} [errors] Array of ValidationErrorItem objects describing the validation errors
  *
- * @property errors An array of ValidationErrorItems
+ * @property errors {ValidationErrorItems[]}
  */
 class ValidationError extends BaseError {
   constructor(message, errors) {
@@ -55,7 +56,7 @@ class ValidationError extends BaseError {
 
       // ... otherwise create a concatenated message out of existing errors.
     } else if (this.errors.length > 0 && this.errors[0].message) {
-      this.message = this.errors.map(err => err.type + ': ' + err.message).join(',\n');
+      this.message = this.errors.map(err => (err.type || err.origin) + ': ' + err.message).join(',\n');
     }
     Error.captureStackTrace(this, this.constructor);
   }
@@ -86,7 +87,6 @@ class OptimisticLockError extends BaseError {
     options.message = options.message || 'Attempting to update a stale model instance: ' + options.modelName;
     super(options);
     this.name = 'SequelizeOptimisticLockError';
-    this.message = options.message;
     /**
      * The name of the model on which the update was attempted
      * @type {string}
@@ -156,7 +156,6 @@ class UniqueConstraintError extends ValidationError {
     super(options.message, options.errors);
 
     this.name = 'SequelizeUniqueConstraintError';
-    this.message = options.message;
     this.errors = options.errors;
     this.fields = options.fields;
     this.parent = options.parent;
@@ -183,6 +182,7 @@ class ForeignKeyConstraintError extends DatabaseError {
     this.table = options.table;
     this.value = options.value;
     this.index = options.index;
+    this.reltype = options.reltype;
     Error.captureStackTrace(this, this.constructor);
   }
 }
@@ -199,7 +199,7 @@ class ExclusionConstraintError extends DatabaseError {
     super(options.parent);
     this.name = 'SequelizeExclusionConstraintError';
 
-    this.message = options.message || options.parent.message;
+    this.message = options.message || options.parent.message || '';
     this.constraint = options.constraint;
     this.fields = options.fields;
     this.table = options.table;
@@ -226,21 +226,155 @@ exports.UnknownConstraintError = UnknownConstraintError;
  * Validation Error Item
  * Instances of this class are included in the `ValidationError.errors` property.
  *
- * @param {string} message An error message
- * @param {string} type The type of the validation error
- * @param {string} path The field that triggered the validation error
- * @param {string} value The value that generated the error
+ * @param {String} message An error message
+ * @param {String} type The type/origin of the validation error
+ * @param {String} path The field that triggered the validation error
+ * @param {String} value The value that generated the error
+ * @param {Object} [inst] the DAO instance that caused the validation error
+ * @param {Object} [validatorKey] a validation "key", used for identification
+ * @param {String} [fnName] property name of the BUILT-IN validator function that caused the validation error (e.g. "in" or "len"), if applicable
+ * @param {String} [fnArgs] parameters used with the BUILT-IN validator function, if applicable
  */
 class ValidationErrorItem {
-  constructor(message, type, path, value) {
+  constructor(message, type, path, value, inst, validatorKey, fnName, fnArgs) {
+    /**
+     * An error message
+     *
+     * @type {String} message
+     */
     this.message = message || '';
-    this.type = type || null;
+
+    /**
+     * The type/origin of the validation error
+     *
+     * @type {String}
+     */
+    this.type = null;
+
+    /**
+     * The field that triggered the validation error
+     *
+     * @type {String}
+     */
     this.path = path || null;
+
+    /**
+     * The value that generated the error
+     *
+     * @type {String}
+     */
     this.value = value !== undefined ? value : null;
-    //This doesn't need captureStackTrace because its not a subclass of Error
+
+    this.origin = null;
+
+    /**
+     * The DAO instance that caused the validation error
+     *
+     * @type {Model}
+     */
+    this.instance = inst || null;
+
+    /**
+     * A validation "key", used for identification
+     *
+     * @type {String}
+     */
+    this.validatorKey = validatorKey || null;
+
+    /**
+     * Property name of the BUILT-IN validator function that caused the validation error (e.g. "in" or "len"), if applicable
+     *
+     * @type {String}
+     */
+    this.validatorName = fnName || null;
+
+    /**
+     * Parameters used with the BUILT-IN validator function, if applicable
+     *
+     * @type {String}
+     */
+    this.validatorArgs = fnArgs || [];
+
+    if (type) {
+      if (ValidationErrorItem.Origins[ type ]) {
+        this.origin = type;
+      } else {
+        const lowercaseType = _.toLower(type + '').trim();
+        const realType  = ValidationErrorItem.TypeStringMap[ lowercaseType ];
+
+        if (realType && ValidationErrorItem.Origins[ realType ]) {
+          this.origin = realType;
+          this.type = type;
+        }
+      }
+    }
+
+    // This doesn't need captureStackTrace because it's not a subclass of Error
+  }
+
+  /**
+   * return a lowercase, trimmed string "key" that identifies the validator.
+   *
+   * Note: the string will be empty if the instance has neither a valid `validatorKey` property nor a valid `validatorName` property
+   *
+   * @param   {Boolean} [useTypeAsNS=true]      controls whether the returned value is "namespace",
+   *                                            this parameter is ignored if the validator's `type` is not one of ValidationErrorItem.Origins
+   * @param   {String}  [NSSeparator='.']       a separator string for concatenating the namespace, must be not be empty,
+   *                                            defaults to "." (fullstop). only used and validated if useTypeAsNS is TRUE.
+   * @throws  {Error}                           thrown if NSSeparator is found to be invalid.
+   * @return  {String}
+   *
+   * @private
+   */
+  getValidatorKey(useTypeAsNS, NSSeparator) {
+    const useTANS = typeof useTypeAsNS === 'undefined' ?  true : !!useTypeAsNS;
+    const NSSep = typeof NSSeparator === 'undefined' ? '.' : NSSeparator;
+
+    const type = this.origin;
+    const key = this.validatorKey || this.validatorName;
+    const useNS = useTANS && type && ValidationErrorItem.Origins[ type ];
+
+    if (useNS && (typeof NSSep !== 'string' || !NSSep.length)) {
+      throw new Error('Invalid namespace separator given, must be a non-empty string');
+    }
+
+    if (!(typeof key === 'string' && key.length)) {
+      return '';
+    }
+
+    return _.toLower(useNS ? [type, key].join(NSSep) : key).trim();
   }
 }
+
 exports.ValidationErrorItem = ValidationErrorItem;
+
+/**
+ * An enum that defines valid ValidationErrorItem `origin` values
+ *
+ * @type {Object}
+ * @property CORE       {String}  specifies errors that originate from the sequelize "core"
+ * @property DB         {String}  specifies validation errors that originate from the storage engine
+ * @property FUNCTION   {String}  specifies validation errors that originate from validator functions (both built-in and custom) defined for a given attribute
+ */
+ValidationErrorItem.Origins = {
+  CORE: 'CORE',
+  DB: 'DB',
+  FUNCTION: 'FUNCTION'
+};
+
+/**
+ * An object that is used internally by the `ValidationErrorItem` class
+ * that maps current `type` strings (as given to ValidationErrorItem.constructor()) to
+ * our new `origin` values.
+ *
+ * @type {Object}
+ */
+ValidationErrorItem.TypeStringMap = {
+  'notnull violation': 'CORE',
+  'string violation': 'CORE',
+  'unique violation': 'DB',
+  'validation error': 'FUNCTION'
+};
 
 /**
  * A base class for all connection related errors.
@@ -339,7 +473,6 @@ class InstanceError extends BaseError {
   constructor(message) {
     super(message);
     this.name = 'SequelizeInstanceError';
-    this.message = message;
     Error.captureStackTrace(this, this.constructor);
   }
 }
@@ -352,7 +485,6 @@ class EmptyResultError extends BaseError {
   constructor(message) {
     super(message);
     this.name = 'SequelizeEmptyResultError';
-    this.message = message;
     Error.captureStackTrace(this, this.constructor);
   }
 }
@@ -365,7 +497,6 @@ class EagerLoadingError extends BaseError {
   constructor(message) {
     super(message);
     this.name = 'SequelizeEagerLoadingError';
-    this.message = message;
     Error.captureStackTrace(this, this.constructor);
   }
 }
@@ -378,7 +509,6 @@ class AssociationError extends BaseError {
   constructor(message) {
     super(message);
     this.name = 'SequelizeAssociationError';
-    this.message = message;
     Error.captureStackTrace(this, this.constructor);
   }
 }
@@ -390,7 +520,6 @@ class QueryError extends BaseError {
   constructor(message) {
     super(message);
     this.name = 'SequelizeQueryError';
-    this.message = message;
     Error.captureStackTrace(this, this.constructor);
   }
 }

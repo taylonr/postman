@@ -1,6 +1,0 @@
-src/*
-test/*
-template/*
-build/*.amd.js
-Makefile
-index.html

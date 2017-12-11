@@ -5,6 +5,8 @@ const Helpers = require('./helpers');
 const _ = require('lodash');
 const Transaction = require('../transaction');
 const Association = require('./base');
+const Op = require('../operators');
+
 
 /**
  * One-to-one association
@@ -78,7 +80,7 @@ class BelongsTo extends Association {
 
     newAttributes[this.foreignKey] = _.defaults({}, this.foreignKeyAttribute, {
       type: this.options.keyType || this.target.rawAttributes[this.targetKey].type,
-      allowNull : true
+      allowNull: true
     });
 
     if (this.options.constraints !== false) {
@@ -141,7 +143,7 @@ class BelongsTo extends Association {
 
     if (instances) {
       where[association.targetKey] = {
-        $in: instances.map(instance => instance.get(association.foreignKey))
+        [Op.in]: instances.map(instance => instance.get(association.foreignKey))
       };
     } else {
       if (association.targetKeyIsPrimary && !options.where) {
@@ -153,7 +155,7 @@ class BelongsTo extends Association {
     }
 
     options.where = options.where ?
-      {$and: [where, options.where]} :
+      {[Op.and]: [where, options.where]} :
       where;
 
     if (instances) {

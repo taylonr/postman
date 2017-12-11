@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start:dev": "nodemon ./bin/www",
-    "start:test": "NODE_ENV=test PORT=3000 nodemon ./bin/www",
+    "start:test": "NODE_ENV=test PORT=3030 nodemon ./bin/www",
+    "db:create": "./node_modules/.bin/sequelize db:create && npm run db:migrate && npm run db:seed",
+    "db:create:test": "NODE_ENV=test ./node_modules/.bin/sequelize db:create && NODE_ENV=test npm run db:migrate && NODE_ENV=test npm run db:seed",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
     "db:seed": "./node_modules/.bin/sequelize db:seed:all",
     "lint:watch": "esw -w --fix ./server/**/*.js app.js",
@@ -27,7 +29,7 @@
     "pg-hstore": "^2.3.2",
     "pg-promise": "^6.5.0",
     "ramda": "^0.25.0",
-    "sequelize": "^4.6.0",
+    "sequelize": "^4.8.0",
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
@@ -35,7 +37,7 @@
     "mocha": "^3.5.0",
     "newman": "^3.8.3",
     "node-mocks-http": "^1.6.4",
-    "sequelize-cli": "^2.8.0",
+    "sequelize-cli": "^3.0.0",
     "testdouble": "^3.2.4"
   }
 }

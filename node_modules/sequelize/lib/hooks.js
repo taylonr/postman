@@ -1,5 +1,6 @@
 'use strict';
 
+const _ = require('lodash');
 const Utils = require('./utils');
 const Promise = require('./promise');
 const debug = Utils.getLogger().debugContext('hooks');
@@ -65,33 +66,41 @@ const getProxiedHooks = hookType =>
     : [hookType]
 ;
 
+function getHooks(hookType) {
+  return (this.options.hooks || {})[hookType] || [];
+};
+
 const Hooks = {
-  replaceHookAliases(hooks) {
-    Utils._.each(hooks, (hooksArray, name) => {
-      // Does an alias for this hook name exist?
-      const realHookName = hookAliases[name];
-      if (realHookName) {
-        // Add the hooks to the actual hook
-        hooks[realHookName] = (hooks[realHookName] || []).concat(hooksArray);
-
-        // Delete the alias
-        delete hooks[name];
-      }
+  /**
+   * Process user supplied hooks definition
+   *
+   * @param {Object} hooks
+   *
+   * @private
+   * @memberOf Sequelize
+   * @memberOf Sequelize.Model
+   */
+  _setupHooks(hooks) {
+    this.options.hooks = {};
+    _.map(hooks || {}, (hooksArray, hookName) => {
+      if (!_.isArray(hooksArray)) hooksArray = [hooksArray];
+      hooksArray.forEach(hookFn => this.addHook(hookName, hookFn));
     });
-
-    return hooks;
   },
 
   runHooks(hooks) {
-    if (!hooks) throw new Error('runHooks requires atleast 1 argument');
+    if (!hooks) throw new Error('runHooks requires at least 1 argument');
 
     const hookArgs = Utils.sliceArgs(arguments, 1);
     let hookType;
 
     if (typeof hooks === 'string') {
       hookType = hooks;
-      hooks = this.options.hooks[hookType] || [];
-      if (this.sequelize) hooks = hooks.concat(this.sequelize.options.hooks[hookType] || []);
+      hooks = getHooks.call(this, hookType);
+
+      if (this.sequelize) {
+        hooks = hooks.concat(getHooks.call(this.sequelize, hookType));
+      }
     }
 
     if (!Array.isArray(hooks)) {
@@ -148,8 +157,8 @@ const Hooks = {
     // check for proxies, add them too
     hookType = getProxiedHooks(hookType);
 
-    Utils._.each(hookType, type => {
-      this.options.hooks[type] = this.options.hooks[type] || [];
+    _.each(hookType, type => {
+      this.options.hooks[type] = getHooks.call(this, type);
       this.options.hooks[type].push(name ? {name, fn} : fn);
     });
 
@@ -209,7 +218,7 @@ Hooks.hasHooks = Hooks.hasHook;
 
 
 function applyTo(target) {
-  Utils._.mixin(target, Hooks);
+  _.mixin(target, Hooks);
 
   const allHooks = Object.keys(hookTypes).concat(Object.keys(hookAliases));
   for (const hook of allHooks) {
