@@ -40,8 +40,9 @@ module.exports = (app, express) => {
 
   app.use(apiToken);
 
-  setUpRoutes(app, 'books', booksController);
   app.get('/books/search', booksController.search);
+  setUpRoutes(app, 'books', booksController);
+
 
   setUpRoutes(app, 'households', householdsController);
   app.get('/households/:householdId/users', usersController.getByHouseholdId);
