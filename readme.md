@@ -1,26 +1,8 @@
-# Starting & Stopping containers
+## After Cloning
+After cloning the repo, make sure to run `npm install` in the root of the project directory.
 
-## To initialize the container:
-This will build the docker container, start both the web server and database server and perform an initial database migration.
+## Creating the database
+From the command line, in the root of the project, run `npm run db:create` this will create & seed the database.
 
-`sh init.sh` (development)
-
-`sh init.test.sh` (test)
-
-## To start the container:
-
-`sh dev.sh` (development)
-
-`sh test.sh` (test)
-
-## To stop the containers:
-
-`sh stop.dev.sh` (development)
-
-`sh stop.test.sh` (test)
-
-## To reset the database:
-
-`sh database.sh` (development)
-
-`sh database.test.sh` (test)
+## Running the application
+From the command line, in the root of the project, run `npm run start:dev` this will start the server on port 3000
