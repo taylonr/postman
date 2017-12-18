@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "start:dev": "nodemon ./bin/www",
-    "start:test": "NODE_ENV=test PORT=3030 nodemon ./bin/www",
+    "start:test": "cross-env NODE_ENV=test PORT=3030 nodemon ./bin/www",
     "db:create": "./node_modules/.bin/sequelize db:create && npm run db:migrate && npm run db:seed",
-    "db:create:test": "NODE_ENV=test ./node_modules/.bin/sequelize db:create && NODE_ENV=test npm run db:migrate && NODE_ENV=test npm run db:seed",
+    "db:create:test": "cross-env NODE_ENV=test ./node_modules/.bin/sequelize db:create && NODE_ENV=test npm run db:migrate && NODE_ENV=test npm run db:seed",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
     "db:seed": "./node_modules/.bin/sequelize db:seed:all",
     "lint:watch": "esw -w --fix ./server/**/*.js app.js",
@@ -17,6 +17,7 @@
   "dependencies": {
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
+    "cross-env": "^5.1.1",
     "debug": "~2.6.3",
     "eslint": "^4.5.0",
     "eslint-watch": "^3.1.2",
