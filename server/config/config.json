@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "postgres",
-    "password": null,
+    "password": Gu1nne55,
     "database": "postman_dev",
     "host": "localhost",
     "port": 5432,
@@ -9,7 +9,7 @@
   },
   "test": {
     "username": "postgres",
-    "password": null,
+    "password": Gu1nne55,
     "database": "postman_test",
     "host": "localhost",
     "port": 5432,
