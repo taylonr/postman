@@ -26,7 +26,7 @@ module.exports = {
           model: 'wishlists',
           key: 'id'
         }
-      })
+      });
     }).then(() => {
       return queryInterface.createTable('wishlistBooks', {
         wishlistId: {
@@ -51,10 +51,10 @@ module.exports = {
           allowNull: false,
           type: Sequelize.DATE
         }
-      })
+      });
     });
   },
-  down: function(queryInterface, Sequelize) {
+  down: function(queryInterface) {
     return queryInterface.dropTable('wishlists');
   }
 };

@@ -51,8 +51,8 @@ module.exports = (app, express) => {
   setUpRoutes(app, 'users', usersController);
 
   setUpRoutes(app, 'wishlists', wishlistController);
-  app.post('/wishlists/:wishlistId/books/:bookId', wishlistController.addBook)
-  app.get('/wishlists/:wishlistId/books', wishlistController.getBooks)
+  app.post('/wishlists/:wishlistId/books/:bookId', wishlistController.addBook);
+  app.get('/wishlists/:wishlistId/books', wishlistController.getBooks);
 
   app.get('*', (req, res) => {
     res.status(404).end();

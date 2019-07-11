@@ -2,7 +2,6 @@ const responses = require('../responses');
 const CrudController = require('./crud.controller');
 
 const Book = require('../models').book;
-const Household = require('../models').household;
 
 module.exports = new CrudController(Book, {
 

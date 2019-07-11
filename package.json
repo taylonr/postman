@@ -15,30 +15,30 @@
     "watch": "npm run test:watch & npm run lint:watch"
   },
   "dependencies": {
-    "body-parser": "~1.17.1",
+    "body-parser": "^1.19.0",
     "cookie-parser": "~1.4.3",
     "cross-env": "^5.1.1",
     "debug": "~2.6.3",
     "eslint": "^4.5.0",
-    "eslint-watch": "^3.1.2",
-    "express": "~4.15.2",
-    "express-basic-auth": "^1.1.2",
+    "eslint-watch": "^5.1.2",
+    "express": "^4.17.1",
+    "express-basic-auth": "^1.2.0",
     "jade": "~1.11.0",
-    "morgan": "~1.8.1",
-    "nodemon": "^1.11.0",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.1",
     "pg": "^7.1.2",
     "pg-hstore": "^2.3.2",
     "pg-promise": "^6.5.0",
     "ramda": "^0.25.0",
     "sequelize": "^4.8.0",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "chai": "^4.1.1",
-    "mocha": "^3.5.0",
-    "newman": "^3.8.3",
-    "node-mocks-http": "^1.6.4",
+    "mocha": "^6.1.4",
+    "newman": "^4.5.1",
+    "node-mocks-http": "^1.7.6",
     "sequelize-cli": "^3.0.0",
-    "testdouble": "^3.2.4"
+    "testdouble": "^3.12.1"
   }
 }

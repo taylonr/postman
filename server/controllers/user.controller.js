@@ -26,7 +26,7 @@ module.exports = new CrudController(User, {
         responses.notFound(res);
       }
     })
-    .catch(responses.serverError(res));;
+      .catch(responses.serverError(res));
   },
   updateById: (req, res) => {
     return User

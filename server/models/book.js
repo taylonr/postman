@@ -12,6 +12,6 @@ module.exports = (sequelize, DataTypes) => {
 
   book.associate = (models) => {
     book.belongsToMany(models.wishlist, {through: 'wishlistBooks'});
-  }
+  };
   return book;
 };
