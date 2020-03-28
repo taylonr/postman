@@ -1,16 +1,60 @@
-const express = require('express');
-const logger = require('morgan');
-const bodyParser = require('body-parser');
+const express = require("express");
+const logger = require("morgan");
+const bodyParser = require("body-parser");
+const jsonServer = require("json-server");
 
-const app = express();
+const server = jsonServer.create();
+const router = jsonServer.router("db.json");
 
-app.use(logger('dev'));
+const middlewares = jsonServer.defaults();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+server.use(middlewares);
 
-require('./server/routes/')(app, express);
+server.use(logger("dev"));
 
-app.get('*', (req, res) => res.status(404).send());
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({ extended: false }));
 
-module.exports = app;
+require("./server/routes/")(server, express);
+
+const env = process.env.NODE_ENV || "development";
+function isAuthorized(req) {
+  if (req.headers.authorization) {
+    const user_and_password = new Buffer(
+      req.headers.authorization.split(" ")[1],
+      "base64"
+    ).toString();
+
+    const user = user_and_password.split(":")[0];
+    const pw = user_and_password.split(":")[1];
+
+    return (
+      user === "admin" &&
+      ((env === "test" && pw === "admin_test") || pw === "admin")
+    );
+  } else {
+    return true;
+  }
+}
+
+const bookRouteNeedsAuth = req =>
+  req.url.match(/books/) && (req.method === "DELETE" || req.method === "PUT");
+
+const userRouteNeedsAuth = req =>
+  req.url.match(/users/) && req.method === "DELETE";
+
+server.use((req, res, next) => {
+  if ((bookRouteNeedsAuth || userRouteNeedsAuth) && !isAuthorized(req)) {
+    res.sendStatus(401);
+  } else {
+    next();
+  }
+});
+
+server.use(router);
+
+server.get("*", (req, res) => res.status(404).send());
+
+server.listen(3000, () => {});
+
+module.exports = server;

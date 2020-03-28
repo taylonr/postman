@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('wishlists', {
+    return queryInterface.createTable("wishlists", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -20,27 +20,27 @@ module.exports = {
         type: Sequelize.DATE
       }
     }).then(() => {
-      return queryInterface.addColumn('users', 'wishlistId',{
+      return queryInterface.addColumn("users", "wishlistId",{
         type: Sequelize.INTEGER,
         references: {
-          model: 'wishlists',
-          key: 'id'
+          model: "wishlists",
+          key: "id"
         }
-      })
+      });
     }).then(() => {
-      return queryInterface.createTable('wishlistBooks', {
+      return queryInterface.createTable("wishlistBooks", {
         wishlistId: {
           type: Sequelize.INTEGER,
           references: {
-            model: 'wishlists',
-            key: 'id'
+            model: "wishlists",
+            key: "id"
           }
         },
         bookId: {
           type: Sequelize.INTEGER,
           references: {
-            model: 'books',
-            key: 'id'
+            model: "books",
+            key: "id"
           }
         },
         createdAt: {
@@ -51,10 +51,10 @@ module.exports = {
           allowNull: false,
           type: Sequelize.DATE
         }
-      })
+      });
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('wishlists');
+    return queryInterface.dropTable("wishlists");
   }
 };

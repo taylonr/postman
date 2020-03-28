@@ -1,8 +1,8 @@
-const crud = require('../crud');
-const User = require('../models').user;
-const Wishlist = require('../models').wishlist;
-const responses = require('../responses');
-const CrudController = require('./crud.controller');
+const crud = require("../crud");
+const User = require("../models").user;
+const Wishlist = require("../models").wishlist;
+const responses = require("../responses");
+const CrudController = require("./crud.controller");
 
 module.exports = new CrudController(User, {
   create: (req, res) => {
@@ -26,7 +26,7 @@ module.exports = new CrudController(User, {
         responses.notFound(res);
       }
     })
-    .catch(responses.serverError(res));;
+      .catch(responses.serverError(res));
   },
   updateById: (req, res) => {
     return User

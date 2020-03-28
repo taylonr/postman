@@ -1,0 +1,76 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Satchel!!!!!!!!!: The Life and Times of an American Legend",
+      "author": "Larry Tye",
+      "publicationDate": "2010-05-04",
+      "isbn": "0812977971"
+    },
+    {
+      "id": 2,
+      "title": "Writing To Learn",
+      "author": "William Zinsser",
+      "publicationDate": "1993-06-04",
+      "isbn": "0062720406"
+    },
+    {
+      "id": 3,
+      "title": "John Calvin: A Pilgrim's Life",
+      "author": "Herman J. Selderhuis",
+      "publicationDate": "2009-02-21",
+      "isbn": "0830829210"
+    },
+    {
+      "id": 4,
+      "title": "The Brazilian Jiu Jitsu Globe Trotter",
+      "author": "Christian Gaugart",
+      "publicationDate": "2012-11-13",
+      "isbn": "1479104523"
+    },
+    {
+      "title": "b",
+      "author": "c",
+      "isbn": "2",
+      "releaseDate": "3",
+      "id": 7
+    },
+    {
+      "title": "c",
+      "author": "D",
+      "isbn": "3",
+      "releaseDate": "4",
+      "id": 8
+    }
+  ],
+  "households": [
+    {
+      "users": [
+        {
+          "id": 1,
+          "email": "taylonr@gmail.com",
+          "firstName": "Nate",
+          "lastName": "Taylor"
+        },
+        {
+          "id": 2,
+          "email": "charles@mailinator.com",
+          "firstName": "Charles",
+          "lastName": "Spurgeon"
+        },
+        {
+          "id": 3,
+          "email": "jon@mailinator.com",
+          "firstName": "Jonathan",
+          "lastName": "Edwards"
+        },
+        {
+          "id": 4,
+          "email": "cs@mailinator.com",
+          "firstName": "C.S.",
+          "lastName": "Lewis"
+        }
+      ]
+    }
+  ]
+}

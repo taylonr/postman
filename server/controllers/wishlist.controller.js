@@ -1,15 +1,15 @@
-const Book = require('../models').book;
-const User = require('../models').user;
-const Wishlist = require('../models').wishlist;
-const responses = require('../responses');
-const Sequelize = require('sequelize');
-const CrudController = require('./crud.controller');
-const ramda = require('ramda');
+const Book = require("../models").book;
+const User = require("../models").user;
+const Wishlist = require("../models").wishlist;
+const responses = require("../responses");
+const Sequelize = require("sequelize");
+const CrudController = require("./crud.controller");
+const ramda = require("ramda");
 const pipe = ramda.pipe,
-      pluck = ramda.pluck,
-      flatten = ramda.flatten,
-      uniqBy = ramda.uniqBy,
-      prop = ramda.prop;
+  pluck = ramda.pluck,
+  flatten = ramda.flatten,
+  uniqBy = ramda.uniqBy,
+  prop = ramda.prop;
 
 module.exports = new CrudController(Wishlist, {
   addBook: (req, res) => {
@@ -30,13 +30,13 @@ module.exports = new CrudController(Wishlist, {
   getBooks: (req, res) => {
     return Wishlist
       .findAll({
-        attributes: ['id', 'name'],
+        attributes: ["id", "name"],
         where: {
           id: req.params.wishlistId
         },
         include: [{
           model: Book,
-          attributes: ['title', 'author', 'isbn'],
+          attributes: ["title", "author", "isbn"],
           through: {
             attributes: []
           }
@@ -54,10 +54,10 @@ module.exports = new CrudController(Wishlist, {
       },
       include: [{
         model: Wishlist,
-        attributes: ['id'],
+        attributes: ["id"],
         include: [{
           model: Book,
-          attributes: ['title', 'author', 'isbn'],
+          attributes: ["title", "author", "isbn"],
           through: {
             attributes: []
           }
@@ -65,10 +65,10 @@ module.exports = new CrudController(Wishlist, {
       }]
     }).then((data) => {
       const books = pipe(
-        pluck('wishlist'),
-        pluck('books'),
+        pluck("wishlist"),
+        pluck("books"),
         flatten(),
-        uniqBy(prop('isbn'))
+        uniqBy(prop("isbn"))
       )(data);
       return responses.ok(res)(books);
     });

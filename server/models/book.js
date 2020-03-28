@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 module.exports = (sequelize, DataTypes) => {
-  var book = sequelize.define('book', {
+  var book = sequelize.define("book", {
     title: {
       type: DataTypes.STRING,
       allowNull: false
@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   book.associate = (models) => {
-    book.belongsToMany(models.wishlist, {through: 'wishlistBooks'});
-  }
+    book.belongsToMany(models.wishlist, {through: "wishlistBooks"});
+  };
   return book;
 };

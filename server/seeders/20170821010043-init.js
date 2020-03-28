@@ -1,13 +1,13 @@
-'use strict';
+"use strict";
 
 module.exports = {
   up: function (queryInterface) {
-    return queryInterface.bulkInsert('accounts', [{
-      name: 'Wired Brain Cofee',
+    return queryInterface.bulkInsert("accounts", [{
+      name: "Wired Brain Cofee",
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      name: 'Globomantics',
+      name: "Globomantics",
       createdAt: new Date(),
       updatedAt: new Date()
     }]);
