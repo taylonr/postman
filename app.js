@@ -2,9 +2,10 @@ const express = require("express");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
 const jsonServer = require("json-server");
+const env = process.env.NODE_ENV || "development";
 
 const server = jsonServer.create();
-const router = jsonServer.router("db.json");
+const router = env === "test" ? jsonServer.router("db.test.json") : jsonServer.router("db.json");
 
 const middlewares = jsonServer.defaults();
 
@@ -17,7 +18,6 @@ server.use(bodyParser.urlencoded({ extended: false }));
 
 require("./server/routes/")(server, express);
 
-const env = process.env.NODE_ENV || "development";
 function isAuthorized(req) {
   if (req.headers.authorization) {
     const user_and_password = new Buffer(
@@ -55,6 +55,8 @@ server.use(router);
 
 server.get("*", (req, res) => res.status(404).send());
 
-server.listen(3000, () => {});
+server.listen(process.env.PORT || 3000, () => {
+  console.log(`Server running: ${process.env.PORT || 3000}`);
+});
 
 module.exports = server;
