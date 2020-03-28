@@ -20,7 +20,7 @@ require("./server/routes/")(server, express);
 
 function isAuthorized(req) {
   if (req.headers.authorization) {
-    const user_and_password = new Buffer(
+    const user_and_password = new Buffer.from(
       req.headers.authorization.split(" ")[1],
       "base64"
     ).toString();
