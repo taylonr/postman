@@ -35,11 +35,163 @@
       "isbn": "0060652934",
       "createdAt": "2020-03-27T00:00:00.000Z",
       "updatedAt": "2020-03-27T00:00:00.000Z"
+    },
+    {
+      "title": "You are What You Love: The Spiritual Power of Habit",
+      "author": "James K. A. Smith",
+      "isbn": "15743380X",
+      "releaseDate": "2016-03-05",
+      "createdAt": "2020-04-01T00:53:20.986Z",
+      "updatedAt": "2020-04-01T00:53:20.986Z",
+      "id": 5
     }
   ],
-  "households": [],
-  "users": [],
-  "wishlist": [],
+  "households": [
+    {
+      "name": "Taylor Household",
+      "createdAt": "2020-03-28T19:24:05.953Z",
+      "updatedAt": "2020-03-28T19:24:05.953Z",
+      "id": 1
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2020-03-28T19:26:11.330Z",
+      "updatedAt": "2020-03-28T19:26:11.330Z",
+      "id": 2
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2020-03-28T19:26:27.319Z",
+      "updatedAt": "2020-03-28T19:26:27.320Z",
+      "id": 3
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2020-03-28T19:32:46.498Z",
+      "updatedAt": "2020-03-28T19:32:46.498Z",
+      "id": 4
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2020-03-28T19:33:38.274Z",
+      "updatedAt": "2020-03-28T19:33:38.274Z",
+      "id": 5
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2020-03-28T19:36:39.628Z",
+      "updatedAt": "2020-03-28T19:36:39.628Z",
+      "id": 6
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2020-03-28T20:03:00.115Z",
+      "updatedAt": "2020-03-28T20:03:00.115Z",
+      "id": 7
+    }
+  ],
+  "users": [
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "householdId": 1,
+      "createdAt": "2020-03-28T19:24:05.985Z",
+      "updatedAt": "2020-03-28T19:24:05.985Z",
+      "wishlistId": 1,
+      "id": 1
+    },
+    {
+      "email": "chip+taylonr@gmail.com",
+      "firstName": "Chocolate Chip",
+      "lastName": "Taylor",
+      "householdId": 1,
+      "createdAt": "2020-03-28T19:24:06.012Z",
+      "updatedAt": "2020-03-28T19:24:06.012Z",
+      "wishlistId": 2,
+      "id": 2
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "householdId": 1,
+      "createdAt": "2020-03-28T19:26:11.357Z",
+      "updatedAt": "2020-03-28T19:26:11.357Z",
+      "wishlistId": 3,
+      "id": 3
+    },
+    {
+      "email": "chip+taylonr@gmail.com",
+      "firstName": "Chocolate Chip",
+      "lastName": "Taylor",
+      "householdId": 1,
+      "createdAt": "2020-03-28T19:26:11.374Z",
+      "updatedAt": "2020-03-28T19:26:11.374Z",
+      "wishlistId": 4,
+      "id": 4
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "householdId": 1,
+      "createdAt": "2020-03-28T19:26:27.341Z",
+      "updatedAt": "2020-03-28T19:26:27.341Z",
+      "wishlistId": 5,
+      "id": 5
+    },
+    {
+      "email": "chip+taylonr@gmail.com",
+      "firstName": "Chocolate Chip",
+      "lastName": "Taylor",
+      "householdId": 1,
+      "createdAt": "2020-03-28T19:26:27.364Z",
+      "updatedAt": "2020-03-28T19:26:27.364Z",
+      "wishlistId": 6,
+      "id": 6
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "householdId": 6,
+      "createdAt": "2020-03-28T19:36:39.678Z",
+      "updatedAt": "2020-03-28T19:36:39.678Z",
+      "wishlistId": 7,
+      "id": 7
+    },
+    {
+      "email": "chip+taylonr@gmail.com",
+      "firstName": "Chocolate Chip",
+      "lastName": "Taylor",
+      "householdId": 6,
+      "createdAt": "2020-03-28T19:36:39.707Z",
+      "updatedAt": "2020-03-28T19:36:39.707Z",
+      "wishlistId": 8,
+      "id": 8
+    },
+    {
+      "email": "brookes@mailinator.com",
+      "firstName": "Thomas",
+      "lastName": "Brooks",
+      "householdId": "6",
+      "createdAt": "2020-03-28T19:47:31.102Z",
+      "updatedAt": "2020-03-28T19:47:31.102Z",
+      "wishlistId": 9,
+      "id": 9
+    },
+    {
+      "email": "jon@mailinator.com",
+      "firstName": "Jonathan",
+      "lastName": "Edwards",
+      "householdId": "6",
+      "createdAt": "2020-03-28T19:47:39.278Z",
+      "updatedAt": "2020-03-28T19:47:39.278Z",
+      "wishlistId": 10,
+      "id": 10
+    }
+  ],
   "accounts": [
     {
       "id": 1,
@@ -52,6 +204,66 @@
       "name": "Globomanitcs",
       "createdAt": "2020-03-27T00:00:00.000Z",
       "updatedAt": "2020-03-27T00:00:00.000Z"
+    }
+  ],
+  "wishlists": [
+    {
+      "name": "Nate's List",
+      "books": [
+        1
+      ],
+      "id": 1
+    },
+    {
+      "name": "Chocolate Chip's List",
+      "books": [
+        2
+      ],
+      "id": 2
+    },
+    {
+      "name": "Nate's List",
+      "books": [],
+      "id": 3
+    },
+    {
+      "name": "Chocolate Chip's List",
+      "books": [],
+      "id": 4
+    },
+    {
+      "name": "Nate's List",
+      "books": [],
+      "id": 5
+    },
+    {
+      "name": "Chocolate Chip's List",
+      "books": [],
+      "id": 6
+    },
+    {
+      "name": "Nate's List",
+      "books": [
+        1
+      ],
+      "id": 7
+    },
+    {
+      "name": "Chocolate Chip's List",
+      "books": [
+        2
+      ],
+      "id": 8
+    },
+    {
+      "name": "Thomas's List",
+      "books": [],
+      "id": 9
+    },
+    {
+      "name": "Jonathan's List",
+      "books": [],
+      "id": 10
     }
   ]
 }

@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start:dev": "nodemon app.js",
-    "start:test": "cross-env NODE_ENV=test PORT=3030 nodemon app.js",
+    "start:dev": "nodemon app.js --ignore db.json",
+    "start:test": "cross-env NODE_ENV=test PORT=3030 nodemon app.js --ignore db.test.json",
     "lint:watch": "esw -w --fix ./server/**/*.js app.js",
     "test:watch": "mocha -w -R progress ./server/**/*.spec.js",
     "postmanTests": "newman run ./postman_exports/collections/Users.postman_collection.json -e ./postman_exports/environments/Dev.postman_environment.json",
