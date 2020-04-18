@@ -1,4 +1,4 @@
-const crud = require('../crud');
+const crud = require("../crud");
 
 function CrudController(model, additionalMethods = {}) {
   return Object.assign({

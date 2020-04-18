@@ -1,8 +1,8 @@
-const responses = require('../responses');
-const CrudController = require('./crud.controller');
+const responses = require("../responses");
+const CrudController = require("./crud.controller");
 
-const Book = require('../models').book;
-const Household = require('../models').household;
+const Book = require("../models").book;
+const Household = require("../models").household;
 
 module.exports = new CrudController(Book, {
 
@@ -13,7 +13,7 @@ module.exports = new CrudController(Book, {
         return acct
           .update(req.body, {
             where: { id: req.params.id },
-            fields: ['title', 'author', 'publicationDate', 'isbn']
+            fields: ["title", "author", "publicationDate", "isbn"]
           })
           .then(responses.ok(res));
       });
@@ -34,7 +34,7 @@ module.exports = new CrudController(Book, {
     }
 
     let query = {
-      attributes: ['id', 'title', 'author']
+      attributes: ["id", "title", "author"]
     };
 
     if (Object.keys(where).length !== 0) {

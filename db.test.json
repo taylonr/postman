@@ -1,0 +1,30 @@
+{
+  "books": [
+    {
+      "id": 5,
+      "title": "Don't Waste Your Life",
+      "author": "John Piper",
+      "publicationDate": "2003-04-16T00:00:00.000Z",
+      "isbn": "1593281056",
+      "createdAt": "2020-03-27T00:00:00.000Z",
+      "updatedAt": "2020-03-27T00:00:00.000Z"
+    }
+  ],
+  "households": [],
+  "users": [],
+  "wishlists": [],
+  "accounts": [
+    {
+      "id": 1,
+      "name": "Wired Brain Coffee",
+      "createdAt": "2020-03-27T00:00:00.000Z",
+      "updatedAt": "2020-03-27T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Globomanitcs",
+      "createdAt": "2020-03-27T00:00:00.000Z",
+      "updatedAt": "2020-03-27T00:00:00.000Z"
+    }
+  ]
+}
