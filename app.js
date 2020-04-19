@@ -42,10 +42,10 @@ function isAuthorized(req) {
   }
 }
 
-const bookRouteNeedsAuth = req =>
+const bookRouteNeedsAuth = (req) =>
   req.url.match(/books/) && (req.method === "DELETE" || req.method === "PUT");
 
-const userRouteNeedsAuth = req =>
+const userRouteNeedsAuth = (req) =>
   req.url.match(/users/) && req.method === "DELETE";
 
 server.use((req, res, next) => {
@@ -58,8 +58,8 @@ server.use((req, res, next) => {
 
 server.use((req, res, next) => {
   if (req.method === "POST") {
-    if(req.path.match(/books/) && !req.body.title){
-      res.status(500).send({error: "Title cannot be null"});
+    if (req.path.match(/books/) && !req.body.title) {
+      res.status(500).send({ error: "Title cannot be null" });
       return;
     }
     req.body.createdAt = new Date().toISOString();
@@ -77,20 +77,21 @@ function fullUrl(req) {
   return url.format({
     protocol: req.protocol,
     host: req.get("host"),
-    pathname: req.originalUrl
+    pathname: req.originalUrl,
   });
 }
 
 router.render = (req, res) => {
   if (req.method === "DELETE") {
-    res.status(204).send();
+    res.status(204);
   }
-  if (req.method === "POST" && res.status === 200) {
+
+  if (req.method === "POST" && res.statusCode === 201) {
     res.locals.data.links = [
       {
         rel: "self",
-        href: `${fullUrl(req)}/${res.locals.data.id}`
-      }
+        href: `${fullUrl(req)}/${res.locals.data.id}`,
+      },
     ];
   }
   res.jsonp(res.locals.data);
@@ -142,12 +143,8 @@ const getBooksForWishlist = (wishlistId, db) => {
     .value();
 
   const fullBooks = wishlist.books
-    ? wishlist.books.map(b =>
-        db
-          .get("books")
-          .find({ id: b })
-          .cloneDeep()
-          .value()
+    ? wishlist.books.map((b) =>
+        db.get("books").find({ id: b }).cloneDeep().value()
       )
     : [];
   wishlist.books = fullBooks;
@@ -172,9 +169,9 @@ server.get("/households/:householdId/wishlistBooks", (req, res) => {
     .cloneDeep()
     .value();
 
-  const wishlists = users.map(u => getBooksForWishlist(u.wishlistId, db));
+  const wishlists = users.map((u) => getBooksForWishlist(u.wishlistId, db));
 
-  const books = wishlists.map(w => w.books.map(b => b));
+  const books = wishlists.map((w) => w.books.map((b) => b));
 
   res.status(200).jsonp(flatten(books));
 });
@@ -182,9 +179,18 @@ server.get("/households/:householdId/wishlistBooks", (req, res) => {
 server.get("/books/search", (req, res) => {
   const db = router.db;
 
-  const books = db.get("books").filter(r =>
-    (req.query.title ? r.title.toLowerCase().includes(req.query.title.toLowerCase()) : true) &&
-    (req.query.author ? r.author.toLowerCase().includes(req.query.author.toLowerCase()) : true)).value();
+  const books = db
+    .get("books")
+    .filter(
+      (r) =>
+        (req.query.title
+          ? r.title.toLowerCase().includes(req.query.title.toLowerCase())
+          : true) &&
+        (req.query.author
+          ? r.author.toLowerCase().includes(req.query.author.toLowerCase())
+          : true)
+    )
+    .value();
 
   res.status(200).send(books);
 });

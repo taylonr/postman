@@ -44,6 +44,33 @@
       "createdAt": "2020-04-01T00:53:20.986Z",
       "updatedAt": "2020-04-01T00:53:20.986Z",
       "id": 5
+    },
+    {
+      "title": "test",
+      "author": "test",
+      "isbn": "test",
+      "publicationDate": "2010-01-01T10:00:00Z",
+      "createdAt": "2020-04-19T13:10:24.540Z",
+      "updatedAt": "2020-04-19T13:10:24.540Z",
+      "id": 6
+    },
+    {
+      "title": "test",
+      "author": "test",
+      "isbn": "test",
+      "publicationDate": "2010-01-01T10:00:00Z",
+      "createdAt": "2020-04-19T13:10:49.602Z",
+      "updatedAt": "2020-04-19T13:10:49.602Z",
+      "id": 7
+    },
+    {
+      "title": "test",
+      "author": "test",
+      "isbn": "test",
+      "publicationDate": "2010-01-01T10:00:00Z",
+      "createdAt": "2020-04-19T13:11:10.603Z",
+      "updatedAt": "2020-04-19T13:11:10.603Z",
+      "id": 8
     }
   ],
   "households": [
