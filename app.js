@@ -38,7 +38,7 @@ function isAuthorized(req) {
       ((env === "test" && pw === "admin_test") || pw === "admin")
     );
   } else {
-    return true;
+    return false;
   }
 }
 
@@ -49,7 +49,10 @@ const userRouteNeedsAuth = (req) =>
   req.url.match(/users/) && req.method === "DELETE";
 
 server.use((req, res, next) => {
-  if ((bookRouteNeedsAuth || userRouteNeedsAuth) && !isAuthorized(req)) {
+  if (
+    (bookRouteNeedsAuth(req) || userRouteNeedsAuth(req)) &&
+    !isAuthorized(req)
+  ) {
     res.sendStatus(401);
   } else {
     next();

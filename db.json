@@ -59,15 +59,6 @@
       "author": "test",
       "isbn": "test",
       "publicationDate": "2010-01-01T10:00:00Z",
-      "createdAt": "2020-04-19T13:10:49.602Z",
-      "updatedAt": "2020-04-19T13:10:49.602Z",
-      "id": 7
-    },
-    {
-      "title": "test",
-      "author": "test",
-      "isbn": "test",
-      "publicationDate": "2010-01-01T10:00:00Z",
       "createdAt": "2020-04-19T13:11:10.603Z",
       "updatedAt": "2020-04-19T13:11:10.603Z",
       "id": 8
