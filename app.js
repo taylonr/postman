@@ -61,7 +61,7 @@ server.use((req, res, next) => {
 
 server.use((req, res, next) => {
   if (req.method === "POST") {
-    if (req.path.match(/books/) && !req.body.title) {
+    if ((req.path === "/books" || req.path === "/books/") && !req.body.title) {
       res.status(500).send({ error: "Title cannot be null" });
       return;
     }
