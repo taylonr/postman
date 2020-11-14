@@ -70,6 +70,7 @@ server.use((req, res, next) => {
     next();
   } else if (req.method === "PUT") {
     req.body.updatedAt = new Date().toISOString();
+    req.method = "PATCH";
     next();
   } else {
     next();
