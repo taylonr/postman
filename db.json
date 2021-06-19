@@ -35,57 +35,16 @@
       "isbn": "0060652934",
       "createdAt": "2020-03-27T00:00:00.000Z",
       "updatedAt": "2020-03-27T00:00:00.000Z"
-    },
-    {
-      "title": "test",
-      "author": "tewst",
-      "isbn": "test",
-      "releaseDate": "test",
-      "createdAt": "2020-04-21T13:37:23.217Z",
-      "updatedAt": "2020-04-21T13:37:23.217Z",
-      "id": 5
-    },
-    {
-      "title": "test",
-      "author": "tewst",
-      "isbn": "test",
-      "releaseDate": "test",
-      "createdAt": "2020-04-21T13:37:43.783Z",
-      "updatedAt": "2020-04-21T13:37:43.784Z",
-      "id": 6
-    },
-    {
-      "title": "test",
-      "author": "tewst",
-      "isbn": "test",
-      "releaseDate": "test",
-      "createdAt": "2020-04-21T13:39:10.238Z",
-      "updatedAt": "2020-04-21T13:39:10.238Z",
-      "id": 7,
-      "links": [
-        {
-          "rel": "self",
-          "href": "http://localhost:3000/books/7"
-        }
-      ]
     }
   ],
-  "households": [
-    {
-      "name": "Taylor Household",
-      "createdAt": "2020-04-21T13:39:26.162Z",
-      "updatedAt": "2020-04-21T13:39:26.162Z",
-      "id": 1
-    }
-  ],
+  "households": [],
   "users": [
     {
       "email": "taylonr@gmail.com",
       "firstName": "Nate",
       "lastName": "Taylor",
-      "householdId": 1,
-      "createdAt": "2020-04-21T13:42:46.211Z",
-      "updatedAt": "2020-04-21T13:42:46.211Z",
+      "createdAt": "2021-06-19T22:18:08.828Z",
+      "updatedAt": "2021-06-19T22:18:08.887Z",
       "wishlistId": 1,
       "id": 1,
       "links": [
@@ -113,9 +72,7 @@
   "wishlists": [
     {
       "name": "Nate's List",
-      "books": [
-        1
-      ],
+      "books": [],
       "id": 1
     }
   ]

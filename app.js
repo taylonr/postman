@@ -1,6 +1,5 @@
 const express = require("express");
 const logger = require("morgan");
-const bodyParser = require("body-parser");
 const jsonServer = require("json-server");
 const url = require("url");
 const env = process.env.NODE_ENV || "development";
@@ -18,8 +17,8 @@ server.use(middlewares);
 
 server.use(logger("dev"));
 
-server.use(bodyParser.json());
-server.use(bodyParser.urlencoded({ extended: false }));
+server.use(express.json());
+server.use(express.urlencoded({ extended: false }));
 
 require("./server/routes/")(server, express);
 
@@ -148,8 +147,8 @@ const getBooksForWishlist = (wishlistId, db) => {
 
   const fullBooks = wishlist.books
     ? wishlist.books.map((b) =>
-        db.get("books").find({ id: b }).cloneDeep().value()
-      )
+      db.get("books").find({ id: b }).cloneDeep().value()
+    )
     : [];
   wishlist.books = fullBooks;
 

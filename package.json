@@ -5,31 +5,17 @@
   "scripts": {
     "start:dev": "nodemon app.js --ignore db.json",
     "start:test": "cross-env NODE_ENV=test PORT=3030 nodemon app.js --ignore db.test.json",
-    "lint:watch": "esw -w --fix ./server/**/*.js app.js",
-    "test:watch": "mocha -w -R progress ./server/**/*.spec.js",
-    "postmanTests": "newman run ./postman_exports/collections/Users.postman_collection.json -e ./postman_exports/environments/Dev.postman_environment.json",
-    "watch": "npm run test:watch & npm run lint:watch"
+    "postmanTests": "newman run ./postman_exports/collections/Users.postman_collection.json -e ./postman_exports/environments/Dev.postman_environment.json"
   },
   "dependencies": {
-    "body-parser": "~1.17.1",
-    "cookie-parser": "~1.4.3",
-    "cross-env": "^5.1.1",
-    "debug": "~2.6.3",
-    "eslint": "^4.5.0",
-    "eslint-watch": "^3.1.2",
-    "express": "~4.15.2",
-    "jade": "~1.11.0",
-    "json-server": "^0.16.1",
-    "morgan": "~1.8.1",
-    "nodemon": "^1.11.0",
-    "ramda": "^0.25.0",
-    "serve-favicon": "~2.4.2"
+    "cross-env": "^7.0.0",
+    "express": "^4.17.1",
+    "json-server": "^0.16.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7",
+    "ramda": "^0.27.0"
   },
   "devDependencies": {
-    "chai": "^4.1.1",
-    "mocha": "^3.5.0",
-    "newman": "^3.8.3",
-    "node-mocks-http": "^1.6.4",
-    "testdouble": "^3.2.4"
+    "newman": "^5.2.3"
   }
 }
