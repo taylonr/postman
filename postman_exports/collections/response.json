@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Don't Waste Your Life",
+    "author": "John Piper",
+    "publicationDate": "2003-04-16T00:00:00.000Z",
+    "isbn": "1593281056",
+    "createdAt": "2020-03-27T00:00:00.000Z",
+    "updatedAt": "2020-03-27T00:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "title": "Van Til's Apologetic",
+    "author": "Greg Bahnsen",
+    "publicationDate": "1998-06-01T00:00:00.000Z",
+    "isbn": "0875520987",
+    "createdAt": "2020-03-27T00:00:00.000Z",
+    "updatedAt": "2020-03-27T00:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "title": "Lectures to My Students",
+    "author": "Charles Spurgeon",
+    "publicationDate": "2010-04-15T00:00:00.000Z",
+    "isbn": "1598565176",
+    "createdAt": "2020-03-27T00:00:00.000Z",
+    "updatedAt": "2020-03-27T00:00:00.000Z"
+  },
+  {
+    "id": 4,
+    "title": "The Screwtape Letters",
+    "author": "C. S. Lewis",
+    "publicationDate": "2015-03-21T00:00:00.000Z",
+    "isbn": "0060652934",
+    "createdAt": "2020-03-27T00:00:00.000Z",
+    "updatedAt": "2020-03-27T00:00:00.000Z"
+  }
+]

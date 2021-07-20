@@ -35,22 +35,1135 @@
       "isbn": "0060652934",
       "createdAt": "2020-03-27T00:00:00.000Z",
       "updatedAt": "2020-03-27T00:00:00.000Z"
+    },
+    {
+      "title": "You Are What You Love: The Spiritual Power of Habit",
+      "author": "James K.A. Smith",
+      "isbn": "158743380X",
+      "releaseDate": "2016-03-05",
+      "createdAt": "2021-06-22T22:15:41.821Z",
+      "updatedAt": "2021-06-22T22:15:41.821Z",
+      "id": 5,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/5"
+        }
+      ]
+    },
+    {
+      "title": "Satchel: The Life and Times of an American Legend",
+      "author": "Larry Tye",
+      "isbn": "0812977971",
+      "publicationDate": "2010-05-04",
+      "createdAt": "2021-06-27T19:44:37.598Z",
+      "updatedAt": "2021-06-27T19:44:37.598Z",
+      "id": 6,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/6"
+        }
+      ]
+    },
+    {
+      "title": "Writing To Learn",
+      "author": "William Zinsser",
+      "isbn": "0062720406",
+      "publicationDate": "1993-06-04",
+      "createdAt": "2021-06-27T19:44:37.624Z",
+      "updatedAt": "2021-06-27T19:44:37.624Z",
+      "id": 7,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/7"
+        }
+      ]
+    },
+    {
+      "title": "John Calvin: A Pilgrim's Life",
+      "author": "Herman J. Selderhuis",
+      "isbn": "0830829210",
+      "publicationDate": "2009-02-21",
+      "createdAt": "2021-06-27T19:44:37.643Z",
+      "updatedAt": "2021-06-27T19:44:37.643Z",
+      "id": 8,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/8"
+        }
+      ]
+    },
+    {
+      "title": "The Brazilian Jiu Jitsu Globe Trotter",
+      "author": "Christian Gaugart",
+      "isbn": "1479104523",
+      "publicationDate": "2012-11-13",
+      "createdAt": "2021-06-27T19:44:37.660Z",
+      "updatedAt": "2021-06-27T19:44:37.660Z",
+      "id": 9,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/9"
+        }
+      ]
+    },
+    {
+      "title": "Satchel: The Life and Times of an American Legend",
+      "author": "Larry Tye",
+      "isbn": "0812977971",
+      "publicationDate": "2010-05-04",
+      "createdAt": "2021-06-27T19:44:48.343Z",
+      "updatedAt": "2021-06-27T19:44:48.343Z",
+      "id": 10,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/10"
+        }
+      ]
+    },
+    {
+      "title": "Writing To Learn",
+      "author": "William Zinsser",
+      "isbn": "0062720406",
+      "publicationDate": "1993-06-04",
+      "createdAt": "2021-06-27T19:44:48.362Z",
+      "updatedAt": "2021-06-27T19:44:48.362Z",
+      "id": 11,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/11"
+        }
+      ]
+    },
+    {
+      "title": "John Calvin: A Pilgrim's Life",
+      "author": "Herman J. Selderhuis",
+      "isbn": "0830829210",
+      "publicationDate": "2009-02-21",
+      "createdAt": "2021-06-27T19:44:48.382Z",
+      "updatedAt": "2021-06-27T19:44:48.382Z",
+      "id": 12,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/12"
+        }
+      ]
+    },
+    {
+      "title": "The Brazilian Jiu Jitsu Globe Trotter",
+      "author": "Christian Gaugart",
+      "isbn": "1479104523",
+      "publicationDate": "2012-11-13",
+      "createdAt": "2021-06-27T19:44:48.402Z",
+      "updatedAt": "2021-06-27T19:44:48.402Z",
+      "id": 13,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/13"
+        }
+      ]
+    },
+    {
+      "title": "Satchel: The Life and Times of an American Legend",
+      "author": "Larry Tye",
+      "isbn": "0812977971",
+      "publicationDate": "2010-05-04",
+      "createdAt": "2021-06-27T19:53:22.817Z",
+      "updatedAt": "2021-06-27T19:53:22.817Z",
+      "id": 14,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/14"
+        }
+      ]
+    },
+    {
+      "title": "Writing To Learn",
+      "author": "William Zinsser",
+      "isbn": "0062720406",
+      "publicationDate": "1993-06-04",
+      "createdAt": "2021-06-27T19:53:22.845Z",
+      "updatedAt": "2021-06-27T19:53:22.845Z",
+      "id": 15,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/15"
+        }
+      ]
+    },
+    {
+      "title": "John Calvin: A Pilgrim's Life",
+      "author": "Herman J. Selderhuis",
+      "isbn": "0830829210",
+      "publicationDate": "2009-02-21",
+      "createdAt": "2021-06-27T19:53:22.866Z",
+      "updatedAt": "2021-06-27T19:53:22.866Z",
+      "id": 16,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/16"
+        }
+      ]
+    },
+    {
+      "title": "The Brazilian Jiu Jitsu Globe Trotter",
+      "author": "Christian Gaugart",
+      "isbn": "1479104523",
+      "publicationDate": "2012-11-13",
+      "createdAt": "2021-06-27T19:53:22.887Z",
+      "updatedAt": "2021-06-27T19:53:22.887Z",
+      "id": 17,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/17"
+        }
+      ]
+    },
+    {
+      "title": "Satchel: The Life and Times of an American Legend",
+      "author": "Larry Tye",
+      "isbn": "0812977971",
+      "publicationDate": "2010-05-04",
+      "createdAt": "2021-06-27T19:53:44.501Z",
+      "updatedAt": "2021-06-27T19:53:44.501Z",
+      "id": 18,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/18"
+        }
+      ]
+    },
+    {
+      "title": "Writing To Learn",
+      "author": "William Zinsser",
+      "isbn": "0062720406",
+      "publicationDate": "1993-06-04",
+      "createdAt": "2021-06-27T19:53:44.527Z",
+      "updatedAt": "2021-06-27T19:53:44.527Z",
+      "id": 19,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/19"
+        }
+      ]
+    },
+    {
+      "title": "John Calvin: A Pilgrim's Life",
+      "author": "Herman J. Selderhuis",
+      "isbn": "0830829210",
+      "publicationDate": "2009-02-21",
+      "createdAt": "2021-06-27T19:53:44.543Z",
+      "updatedAt": "2021-06-27T19:53:44.543Z",
+      "id": 20,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/20"
+        }
+      ]
+    },
+    {
+      "title": "The Brazilian Jiu Jitsu Globe Trotter",
+      "author": "Christian Gaugart",
+      "isbn": "1479104523",
+      "publicationDate": "2012-11-13",
+      "createdAt": "2021-06-27T19:53:44.563Z",
+      "updatedAt": "2021-06-27T19:53:44.563Z",
+      "id": 21,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/21"
+        }
+      ]
+    },
+    {
+      "title": "The Brazilian Jiu Jitsu Globe Trotter",
+      "author": "Christian Gaugart",
+      "isbn": "1479104523",
+      "publicationDate": "2012-11-13",
+      "createdAt": "2021-06-27T19:53:44.584Z",
+      "updatedAt": "2021-06-27T19:53:44.584Z",
+      "id": 22,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/22"
+        }
+      ]
+    },
+    {
+      "title": "The Brazilian Jiu Jitsu Globe Trotter",
+      "author": "Christian Gaugart",
+      "isbn": "1479104523",
+      "publicationDate": "2012-11-13",
+      "createdAt": "2021-06-27T19:53:44.602Z",
+      "updatedAt": "2021-06-27T19:53:44.602Z",
+      "id": 23,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/23"
+        }
+      ]
+    },
+    {
+      "title": "The Brazilian Jiu Jitsu Globe Trotter",
+      "author": "Christian Gaugart",
+      "isbn": "1479104523",
+      "publicationDate": "2012-11-13",
+      "createdAt": "2021-06-27T19:53:44.620Z",
+      "updatedAt": "2021-06-27T19:53:44.620Z",
+      "id": 24,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/24"
+        }
+      ]
+    },
+    {
+      "title": "The Brazilian Jiu Jitsu Globe Trotter",
+      "author": "Christian Gaugart",
+      "isbn": "1479104523",
+      "publicationDate": "2012-11-13",
+      "createdAt": "2021-06-27T19:53:44.644Z",
+      "updatedAt": "2021-06-27T19:53:44.644Z",
+      "id": 25,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/25"
+        }
+      ]
+    },
+    {
+      "title": "The Brazilian Jiu Jitsu Globe Trotter",
+      "author": "Christian Gaugart",
+      "isbn": "1479104523",
+      "publicationDate": "2012-11-13",
+      "createdAt": "2021-06-27T19:53:44.664Z",
+      "updatedAt": "2021-06-27T19:53:44.664Z",
+      "id": 26,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/26"
+        }
+      ]
+    },
+    {
+      "title": "The Brazilian Jiu Jitsu Globe Trotter",
+      "author": "Christian Gaugart",
+      "isbn": "1479104523",
+      "publicationDate": "2012-11-13",
+      "createdAt": "2021-06-27T19:53:44.686Z",
+      "updatedAt": "2021-06-27T19:53:44.686Z",
+      "id": 27,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/books/27"
+        }
+      ]
     }
   ],
-  "households": [],
+  "households": [
+    {
+      "name": "Taylor Household",
+      "createdAt": "2021-06-26T20:26:10.531Z",
+      "updatedAt": "2021-06-26T20:26:10.531Z",
+      "id": 1,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/households/1"
+        }
+      ]
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2021-06-26T21:33:28.552Z",
+      "updatedAt": "2021-06-26T21:33:28.552Z",
+      "id": 2,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/households/2"
+        }
+      ]
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2021-06-26T21:34:19.926Z",
+      "updatedAt": "2021-06-26T21:34:19.926Z",
+      "id": 3,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/households/3"
+        }
+      ]
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2021-06-27T18:49:47.360Z",
+      "updatedAt": "2021-06-27T18:49:47.360Z",
+      "id": 4,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/households/4"
+        }
+      ]
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2021-06-27T18:50:08.649Z",
+      "updatedAt": "2021-06-27T18:50:08.649Z",
+      "id": 5,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/households/5"
+        }
+      ]
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2021-06-27T19:02:34.438Z",
+      "updatedAt": "2021-06-27T19:02:34.438Z",
+      "id": 6,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/households/6"
+        }
+      ]
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2021-06-29T23:24:17.906Z",
+      "updatedAt": "2021-06-29T23:24:17.906Z",
+      "id": 7,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/households/7"
+        }
+      ]
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2021-06-29T23:25:54.956Z",
+      "updatedAt": "2021-06-29T23:25:54.956Z",
+      "id": 8,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/households/8"
+        }
+      ]
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2021-06-29T23:27:22.503Z",
+      "updatedAt": "2021-06-29T23:27:22.503Z",
+      "id": 9,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/households/9"
+        }
+      ]
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2021-06-29T23:27:49.847Z",
+      "updatedAt": "2021-06-29T23:27:49.847Z",
+      "id": 10,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/households/10"
+        }
+      ]
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2021-06-29T23:28:08.408Z",
+      "updatedAt": "2021-06-29T23:28:08.408Z",
+      "id": 11,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/households/11"
+        }
+      ]
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2021-06-29T23:28:17.226Z",
+      "updatedAt": "2021-06-29T23:28:17.226Z",
+      "id": 12,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/households/12"
+        }
+      ]
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2021-06-29T23:29:10.920Z",
+      "updatedAt": "2021-06-29T23:29:10.920Z",
+      "id": 13,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/households/13"
+        }
+      ]
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2021-06-29T23:31:02.870Z",
+      "updatedAt": "2021-06-29T23:31:02.870Z",
+      "id": 14,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/households/14"
+        }
+      ]
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2021-06-29T23:31:11.762Z",
+      "updatedAt": "2021-06-29T23:31:11.762Z",
+      "id": 15,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/households/15"
+        }
+      ]
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2021-06-29T23:32:12.201Z",
+      "updatedAt": "2021-06-29T23:32:12.201Z",
+      "id": 16,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/households/16"
+        }
+      ]
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2021-06-30T00:23:07.225Z",
+      "updatedAt": "2021-06-30T00:23:07.225Z",
+      "id": 17,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/households/17"
+        }
+      ]
+    },
+    {
+      "name": "Taylor Household",
+      "createdAt": "2021-07-10T23:52:56.361Z",
+      "updatedAt": "2021-07-10T23:52:56.361Z",
+      "id": 18
+    }
+  ],
   "users": [
     {
       "email": "taylonr@gmail.com",
       "firstName": "Nate",
       "lastName": "Taylor",
-      "createdAt": "2021-06-19T22:18:08.828Z",
-      "updatedAt": "2021-06-19T22:18:08.887Z",
+      "householdId": 1,
+      "createdAt": "2021-06-26T20:50:31.944Z",
+      "updatedAt": "2021-06-26T20:50:31.944Z",
       "wishlistId": 1,
       "id": 1,
       "links": [
         {
           "rel": "self",
           "href": "http://localhost:3000/users/1"
+        }
+      ]
+    },
+    {
+      "email": "chip+taylonr@gmail.com",
+      "firstName": "Chocolate Chip",
+      "lastName": "Taylor",
+      "householdId": 1,
+      "createdAt": "2021-06-26T20:53:02.478Z",
+      "updatedAt": "2021-06-26T20:53:02.478Z",
+      "wishlistId": 2,
+      "id": 2,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/2"
+        }
+      ]
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "householdId": 1,
+      "createdAt": "2021-06-26T21:33:28.578Z",
+      "updatedAt": "2021-06-26T21:33:28.578Z",
+      "wishlistId": 3,
+      "id": 3,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/3"
+        }
+      ]
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "householdId": 1,
+      "createdAt": "2021-06-26T21:33:28.596Z",
+      "updatedAt": "2021-06-26T21:33:28.596Z",
+      "wishlistId": 4,
+      "id": 4,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/4"
+        }
+      ]
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "householdId": 1,
+      "createdAt": "2021-06-26T21:34:19.949Z",
+      "updatedAt": "2021-06-26T21:34:19.949Z",
+      "wishlistId": 5,
+      "id": 5,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/5"
+        }
+      ]
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "householdId": 1,
+      "createdAt": "2021-06-26T21:34:19.966Z",
+      "updatedAt": "2021-06-26T21:34:19.966Z",
+      "wishlistId": 6,
+      "id": 6,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/6"
+        }
+      ]
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "householdId": 6,
+      "createdAt": "2021-06-27T19:02:34.474Z",
+      "updatedAt": "2021-06-27T19:02:34.474Z",
+      "wishlistId": 7,
+      "id": 7,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/7"
+        }
+      ]
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "householdId": 6,
+      "createdAt": "2021-06-27T19:02:34.504Z",
+      "updatedAt": "2021-06-27T19:02:34.504Z",
+      "wishlistId": 8,
+      "id": 8,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/8"
+        }
+      ]
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "householdId": 6,
+      "createdAt": "2021-06-27T19:25:05.658Z",
+      "updatedAt": "2021-06-27T19:25:05.658Z",
+      "wishlistId": 9,
+      "id": 9,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/9"
+        }
+      ]
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "householdId": 6,
+      "createdAt": "2021-06-27T19:27:15.137Z",
+      "updatedAt": "2021-06-27T19:27:15.137Z",
+      "wishlistId": 10,
+      "id": 10,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/10"
+        }
+      ]
+    },
+    {
+      "email": "charles@mailinator.com",
+      "firstName": "Charles",
+      "lastName": "Spurgeon",
+      "householdId": 7,
+      "createdAt": "2021-06-29T23:24:17.944Z",
+      "updatedAt": "2021-06-29T23:24:17.944Z",
+      "wishlistId": 11,
+      "id": 11,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/11"
+        }
+      ]
+    },
+    {
+      "email": "cs@mailinator.com",
+      "firstName": "C.S.",
+      "lastName": "Lewis",
+      "householdId": 7,
+      "createdAt": "2021-06-29T23:24:17.979Z",
+      "updatedAt": "2021-06-29T23:24:17.979Z",
+      "wishlistId": 12,
+      "id": 12,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/12"
+        }
+      ]
+    },
+    {
+      "email": "jon@mailinator.com",
+      "firstName": "Jonathan",
+      "lastName": "Edwards",
+      "householdId": 8,
+      "createdAt": "2021-06-29T23:25:54.991Z",
+      "updatedAt": "2021-06-29T23:25:54.991Z",
+      "wishlistId": 13,
+      "id": 13,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/13"
+        }
+      ]
+    },
+    {
+      "email": "cs@mailinator.com",
+      "firstName": "C.S.",
+      "lastName": "Lewis",
+      "householdId": 8,
+      "createdAt": "2021-06-29T23:25:55.024Z",
+      "updatedAt": "2021-06-29T23:25:55.024Z",
+      "wishlistId": 14,
+      "id": 14,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/14"
+        }
+      ]
+    },
+    {
+      "email": "cs@mailinator.com",
+      "firstName": "C.S.",
+      "lastName": "Lewis",
+      "householdId": 9,
+      "createdAt": "2021-06-29T23:27:22.541Z",
+      "updatedAt": "2021-06-29T23:27:22.541Z",
+      "wishlistId": 15,
+      "id": 15,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/15"
+        }
+      ]
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "householdId": 9,
+      "createdAt": "2021-06-29T23:27:22.576Z",
+      "updatedAt": "2021-06-29T23:27:22.576Z",
+      "wishlistId": 16,
+      "id": 16,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/16"
+        }
+      ]
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "householdId": 10,
+      "createdAt": "2021-06-29T23:27:49.888Z",
+      "updatedAt": "2021-06-29T23:27:49.888Z",
+      "wishlistId": 17,
+      "id": 17,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/17"
+        }
+      ]
+    },
+    {
+      "email": "jon@mailinator.com",
+      "firstName": "Jonathan",
+      "lastName": "Edwards",
+      "householdId": 10,
+      "createdAt": "2021-06-29T23:27:49.921Z",
+      "updatedAt": "2021-06-29T23:27:49.921Z",
+      "wishlistId": 18,
+      "id": 18,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/18"
+        }
+      ]
+    },
+    {
+      "email": "charles@mailinator.com",
+      "firstName": "Charles",
+      "lastName": "Spurgeon",
+      "householdId": 11,
+      "createdAt": "2021-06-29T23:28:08.460Z",
+      "updatedAt": "2021-06-29T23:28:08.460Z",
+      "wishlistId": 19,
+      "id": 19,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/19"
+        }
+      ]
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "householdId": 11,
+      "createdAt": "2021-06-29T23:28:08.492Z",
+      "updatedAt": "2021-06-29T23:28:08.492Z",
+      "wishlistId": 20,
+      "id": 20,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/20"
+        }
+      ]
+    },
+    {
+      "email": "cs@mailinator.com",
+      "firstName": "C.S.",
+      "lastName": "Lewis",
+      "householdId": 12,
+      "createdAt": "2021-06-29T23:28:17.267Z",
+      "updatedAt": "2021-06-29T23:28:17.267Z",
+      "wishlistId": 21,
+      "id": 21,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/21"
+        }
+      ]
+    },
+    {
+      "email": "jon@mailinator.com",
+      "firstName": "Jonathan",
+      "lastName": "Edwards",
+      "householdId": 12,
+      "createdAt": "2021-06-29T23:28:17.301Z",
+      "updatedAt": "2021-06-29T23:28:17.301Z",
+      "wishlistId": 22,
+      "id": 22,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/22"
+        }
+      ]
+    },
+    {
+      "email": "charles@mailinator.com",
+      "firstName": "Charles",
+      "lastName": "Spurgeon",
+      "householdId": 13,
+      "createdAt": "2021-06-29T23:29:10.970Z",
+      "updatedAt": "2021-06-29T23:29:10.970Z",
+      "wishlistId": 23,
+      "id": 23,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/23"
+        }
+      ]
+    },
+    {
+      "email": "jon@mailinator.com",
+      "firstName": "Jonathan",
+      "lastName": "Edwards",
+      "householdId": 13,
+      "createdAt": "2021-06-29T23:29:11.012Z",
+      "updatedAt": "2021-06-29T23:29:11.012Z",
+      "wishlistId": 24,
+      "id": 24,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/24"
+        }
+      ]
+    },
+    {
+      "email": "jon@mailinator.com",
+      "firstName": "Jonathan",
+      "lastName": "Edwards",
+      "householdId": 14,
+      "createdAt": "2021-06-29T23:31:02.913Z",
+      "updatedAt": "2021-06-29T23:31:02.913Z",
+      "wishlistId": 25,
+      "id": 25,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/25"
+        }
+      ]
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "householdId": 14,
+      "createdAt": "2021-06-29T23:31:02.955Z",
+      "updatedAt": "2021-06-29T23:31:02.955Z",
+      "wishlistId": 26,
+      "id": 26,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/26"
+        }
+      ]
+    },
+    {
+      "email": "jon@mailinator.com",
+      "firstName": "Jonathan",
+      "lastName": "Edwards",
+      "householdId": 15,
+      "createdAt": "2021-06-29T23:31:11.806Z",
+      "updatedAt": "2021-06-29T23:31:11.806Z",
+      "wishlistId": 27,
+      "id": 27,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/27"
+        }
+      ]
+    },
+    {
+      "email": "jon@mailinator.com",
+      "firstName": "Jonathan",
+      "lastName": "Edwards",
+      "householdId": 15,
+      "createdAt": "2021-06-29T23:31:11.842Z",
+      "updatedAt": "2021-06-29T23:31:11.842Z",
+      "wishlistId": 28,
+      "id": 28,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/28"
+        }
+      ]
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "householdId": 16,
+      "createdAt": "2021-06-29T23:32:12.241Z",
+      "updatedAt": "2021-06-29T23:32:12.241Z",
+      "wishlistId": 29,
+      "id": 29,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/29"
+        }
+      ]
+    },
+    {
+      "email": "cs@mailinator.com",
+      "firstName": "C.S.",
+      "lastName": "Lewis",
+      "householdId": 16,
+      "createdAt": "2021-06-29T23:32:12.282Z",
+      "updatedAt": "2021-06-29T23:32:12.282Z",
+      "wishlistId": 30,
+      "id": 30,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/30"
+        }
+      ]
+    },
+    {
+      "email": "cs@mailinator.com",
+      "firstName": "C.S.",
+      "lastName": "Lewis",
+      "householdId": 17,
+      "createdAt": "2021-06-30T00:23:07.314Z",
+      "updatedAt": "2021-06-30T00:23:07.314Z",
+      "wishlistId": 31,
+      "id": 31,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/31"
+        }
+      ]
+    },
+    {
+      "email": "cs@mailinator.com",
+      "firstName": "C.S.",
+      "lastName": "Lewis",
+      "householdId": 17,
+      "createdAt": "2021-06-30T00:23:07.407Z",
+      "updatedAt": "2021-06-30T00:23:07.407Z",
+      "wishlistId": 32,
+      "id": 32,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/32"
+        }
+      ]
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "createdAt": "2021-06-30T01:21:35.350Z",
+      "updatedAt": "2021-06-30T01:21:35.350Z",
+      "wishlistId": 33,
+      "id": 33,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/33"
+        }
+      ]
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "createdAt": "2021-06-30T01:23:19.443Z",
+      "updatedAt": "2021-06-30T01:23:19.443Z",
+      "wishlistId": 34,
+      "id": 34,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/34"
+        }
+      ]
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "createdAt": "2021-07-01T22:25:45.718Z",
+      "updatedAt": "2021-07-01T22:25:45.792Z",
+      "wishlistId": 35,
+      "id": 35,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/35"
+        }
+      ]
+    },
+    {
+      "email": "taylonr@gmail.com",
+      "firstName": "Nate",
+      "lastName": "Taylor",
+      "createdAt": "2021-07-01T22:31:49.175Z",
+      "updatedAt": "2021-07-01T22:31:49.175Z",
+      "wishlistId": 36,
+      "id": 36,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:3000/users/36"
         }
       ]
     }
@@ -72,8 +1185,215 @@
   "wishlists": [
     {
       "name": "Nate's List",
-      "books": [],
+      "books": [
+        1
+      ],
       "id": 1
+    },
+    {
+      "name": "Chocolate Chip's List",
+      "books": [
+        2
+      ],
+      "id": 2
+    },
+    {
+      "name": "Nate's List",
+      "books": [],
+      "id": 3
+    },
+    {
+      "name": "Nate's List",
+      "books": [],
+      "id": 4
+    },
+    {
+      "name": "Nate's List",
+      "books": [],
+      "id": 5
+    },
+    {
+      "name": "Nate's List",
+      "books": [],
+      "id": 6
+    },
+    {
+      "name": "Nate's List",
+      "books": [
+        1
+      ],
+      "id": 7
+    },
+    {
+      "name": "Nate's List",
+      "books": [
+        2
+      ],
+      "id": 8
+    },
+    {
+      "name": "Nate's List",
+      "books": [],
+      "id": 9
+    },
+    {
+      "name": "Nate's List",
+      "books": [],
+      "id": 10
+    },
+    {
+      "name": "Charles's List",
+      "books": [],
+      "id": 11
+    },
+    {
+      "name": "C.S.'s List",
+      "books": [],
+      "id": 12
+    },
+    {
+      "name": "Jonathan's List",
+      "books": [],
+      "id": 13
+    },
+    {
+      "name": "C.S.'s List",
+      "books": [],
+      "id": 14
+    },
+    {
+      "name": "C.S.'s List",
+      "books": [],
+      "id": 15
+    },
+    {
+      "name": "Nate's List",
+      "books": [],
+      "id": 16
+    },
+    {
+      "name": "Nate's List",
+      "books": [],
+      "id": 17
+    },
+    {
+      "name": "Jonathan's List",
+      "books": [
+        27
+      ],
+      "id": 18
+    },
+    {
+      "name": "Charles's List",
+      "books": [
+        6
+      ],
+      "id": 19
+    },
+    {
+      "name": "Nate's List",
+      "books": [],
+      "id": 20
+    },
+    {
+      "name": "C.S.'s List",
+      "books": [
+        10
+      ],
+      "id": 21
+    },
+    {
+      "name": "Jonathan's List",
+      "books": [],
+      "id": 22
+    },
+    {
+      "name": "Charles's List",
+      "books": [],
+      "id": 23
+    },
+    {
+      "name": "Jonathan's List",
+      "books": [
+        27
+      ],
+      "id": 24
+    },
+    {
+      "name": "Jonathan's List",
+      "books": [],
+      "id": 25
+    },
+    {
+      "name": "Nate's List",
+      "books": [
+        9
+      ],
+      "id": 26
+    },
+    {
+      "name": "Jonathan's List",
+      "books": [
+        1
+      ],
+      "id": 27
+    },
+    {
+      "name": "Jonathan's List",
+      "books": [],
+      "id": 28
+    },
+    {
+      "name": "Nate's List",
+      "books": [
+        13,
+        25,
+        7
+      ],
+      "id": 29
+    },
+    {
+      "name": "C.S.'s List",
+      "books": [
+        13
+      ],
+      "id": 30
+    },
+    {
+      "name": "C.S.'s List",
+      "books": [
+        23,
+        5,
+        8
+      ],
+      "id": 31
+    },
+    {
+      "name": "C.S.'s List",
+      "books": [
+        16
+      ],
+      "id": 32
+    },
+    {
+      "name": "Nate's List",
+      "books": [],
+      "id": 33
+    },
+    {
+      "name": "Nate's List",
+      "books": [],
+      "id": 34
+    },
+    {
+      "name": "Nate's List",
+      "books": [],
+      "id": 35
+    },
+    {
+      "name": "Nate's List",
+      "books": [],
+      "id": 36
     }
   ]
 }

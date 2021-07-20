@@ -1,5 +1,4 @@
 <input type='text' id='mock' placeholder='Mock Url' style="width: 400px" />
-<input type='text' id='key' placeholder='API Key' style="width: 400px" />
 <button type="button">Get Households</button>
 
 <div class="container"></div>
@@ -18,16 +17,14 @@ crossorigin="anonymous"></script>
             "method": "GET",
             "headers": {
                 "cache-control": "no-cache",
-                "x-api-key": $('#key').val()
             }
         };
     };
 
     $('button').on('click', () => {
-        const settings = createSettings($('#mock').val() + '/households');
+        const settings = createSettings($('#mock').val().trim() + '/households');
         $.ajax(settings).done(function (response) {
-            const households = JSON.parse(response);
-            const body = households.reduce((init, r) => {
+            const body = response.reduce((init, r) => {
                 return init = init + `<li data-url="${$('#mock').val()}/households/${r.id}/ownedBooks">${r.name}</li>`;
             }, '');
 
@@ -40,9 +37,7 @@ crossorigin="anonymous"></script>
         const url = $(evt.target).data('url');
         const settings = createSettings(url);
         $.ajax(settings).done(function(response){
-            const books = JSON.parse(response);
-
-            const body = books.reduce((html, b) => {
+            const body = response.reduce((html, b) => {
                 return html = html + `<li>${b.title} - ${b.author}</li>`;
             }, '');
 

@@ -1,0 +1,14 @@
+{
+	"id": "caebf330-04bf-49f1-a2ab-d752432ad024",
+	"name": "Dev",
+	"values": [
+		{
+			"key": "host",
+			"value": "localhost:3000",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2021-07-01T22:35:20.925Z",
+	"_postman_exported_using": "Postman/8.6.2"
+}

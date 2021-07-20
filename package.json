@@ -5,7 +5,7 @@
   "scripts": {
     "start:dev": "nodemon app.js --ignore db.json",
     "start:test": "cross-env NODE_ENV=test PORT=3030 nodemon app.js --ignore db.test.json",
-    "postmanTests": "newman run ./postman_exports/collections/Users.postman_collection.json -e ./postman_exports/environments/Dev.postman_environment.json"
+    "postmanTests": "newman run ./postman_exports/collections/Users.postman_collectionv2.json -e ./postman_exports/environments/Dev.environment.json"
   },
   "dependencies": {
     "cross-env": "^7.0.0",
