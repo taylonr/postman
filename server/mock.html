@@ -17,6 +17,7 @@ crossorigin="anonymous"></script>
             "method": "GET",
             "headers": {
                 "cache-control": "no-cache",
+                "Content-Type": "application/json"
             }
         };
     };
@@ -24,6 +25,9 @@ crossorigin="anonymous"></script>
     $('button').on('click', () => {
         const settings = createSettings($('#mock').val().trim() + '/households');
         $.ajax(settings).done(function (response) {
+            if (typeof response === 'string' || response instanceof String){
+                response = JSON.parse(response);
+            }
             const body = response.reduce((init, r) => {
                 return init = init + `<li data-url="${$('#mock').val()}/households/${r.id}/ownedBooks">${r.name}</li>`;
             }, '');
